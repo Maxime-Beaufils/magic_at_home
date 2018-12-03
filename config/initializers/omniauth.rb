@@ -1,4 +1,11 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
- provider OmniAuth::Strategies::GoogleOauth2, ENV["KEY"], ENV["SECRET"]
- provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-end
+    provider :facebook, "API_KEY", "API_SECRET"
+    {
+        :secure_image_url => 'true',
+        :image_size => 'original',
+        :authorize_params => {
+          :force_login => 'true',
+          :lang => 'pt'
+        }
+      }
+   end
