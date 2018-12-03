@@ -1,13 +1,7 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-/*
-*/
 /***********************
  landing page 
  ************************/
  body{
-  /*background-image: url('../images/dark_wall.png');*/
   background-color: black;
   overflow-x: hidden;
 }
@@ -17,10 +11,9 @@
  background-color: #0d1d33; /* Used if the image is unavailable */
  background-position: center; /* Center the image */
  background-repeat: no-repeat; /* Do not repeat the image */
- background-size: contain; /* Resize the background image to cover the entire container */ ;
+ background-size: cover; /* Resize the background image to cover the entire container */ ;
  -webkit-background-size: cover;
  -moz-background-size: cover;
- background-size: cover;
  -o-background-size: cover;
  margin-top: 30px;
  animation: shrink 15s infinite alternate;
@@ -141,7 +134,7 @@ h1 {
  font-size: 2.5rem;
 }
 .head{
- background-image: url("../images/head.jpg");
+ background-image: url("../assets/head.jpg");
 }
 
 /* Card sizing */
