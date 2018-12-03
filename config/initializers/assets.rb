@@ -14,4 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('lib')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( landing_pages.scss )
+Rails.application.config.assets.precompile += %w( dashboards.scss )
 Rails.application.config.assets.precompile += %w( *.png *.gif *.jpg *.ico *.svg *.eot *.ttf *.woff *.woff2)
