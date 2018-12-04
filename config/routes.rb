@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'games/index'
-  get 'games/edit'
-  get 'games/show'
-  get 'games/delete'
-  get 'games/new'
+  resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   get 'dashboards/index', to: 'dashboards#index'
   get '/profil', to: 'dashboards#profil'
   get 'landing_pages/index'
