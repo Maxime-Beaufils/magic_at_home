@@ -2,4 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'dashboards'
+@import 'dashboards';
+
+.hover-card-header:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+ transition: all 0.4s ease-out;
+}

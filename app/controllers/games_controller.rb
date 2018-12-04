@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.page(params[:page]).per(20)
+    @game = Game.new
+    @games = Game.all.page(params[:page]).per(10)
   end
 
   def new
