@@ -1,68 +1,35 @@
 <%= stylesheet_link_tag params[:controller] %>
 <div class="wrapper ">
   <%= render 'navbar', :layout => 'navbar' %>
-  
-      <%@games.each do |game| %>
-      <div class="card text-center" >
-      <h5 class="card-title"><%= game.place %></h5>
-      <p class="card-text">><%= game.date %></p>
-      <p class="card-text">><%= game.game_format %></p>
-      <a href="<%= game_path(game.id) %>" class="btn btn-primary">Lien</a>
-      <%end%>
-      </div>
-  </div>
-</div>
-<div class="content">
+    <div class="content">
         <div class="row">
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
+                <h4 class="card-title"> Les parties à venir:</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
-                    <%@games.each do |game| %>
-                      <th><%= game.place %></th>
-                      <th><%= game.date %></th>
-                      <th><%= game.game_format %></th>
-                      <th class="text-center">
-                        Salary
-                      </th>
+                      <th>Lieu</th>
+                      <th>Date</th>
+                      <th>Format joué</th>
+                      <th>Description</th>
                     </thead>
                     <tbody>
+                    <%@games.each do |game| %>
                       <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-center">
-                          $36,738
-                        </td>
+                        <td><%= game.place %></td>
+                        <td><%= game.date %></td>
+                        <td><%= game.game_format %></td>
+                        <td><%= game.description %></td>
                       </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-center">
-                          $23,789
-                        </td>
-                      </tr>
+                    <%end%>
                     </tbody>
                   </table>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
+</div>
