@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_101722) do
     t.text "description"
     t.bigint "user_creator_id"
     t.bigint "user_opponent_id"
-    t.string "Game_Format"
+    t.string "game_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_creator_id"], name: "index_games_on_user_creator_id"

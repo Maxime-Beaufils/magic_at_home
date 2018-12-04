@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.text :description
       t.references :user_creator, foregin_key: true
       t.references :user_opponent, foregin_key: true
-      t.string :Game_Format
+      t.string :game_format
       t.timestamps
     end
   end
