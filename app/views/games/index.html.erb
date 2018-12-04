@@ -34,6 +34,7 @@
                 <th>Date</th>
                 <th>Format joué</th>
                 <th>Description</th>
+                <th>Distance</th>
               </thead>
               <tbody>
               <%@games.each do |game| %>
@@ -42,6 +43,7 @@
                   <td><%= game.date %></td>
                   <td><%= game.game_format %></td>
                   <td><%= game.description %></td>
+                  <td><%= game.distance_to([49.182863,-0.370679].round*1.6%>
                   <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">Lien</a></td>
                 </tr>
               <%end%>

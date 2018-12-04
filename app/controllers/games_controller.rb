@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   def index
     @game = Game.new
+
     @games = Game.all.page(params[:page]).per(10)
+
+    #@games = Game.first.nearbys(30).page(params[:page]).per(10)
+    #@games = Game.first.nearbys(30).page(params[:page]).per(10)
   end
 
   def new
@@ -9,10 +13,13 @@ class GamesController < ApplicationController
   end
 
   def create
+    results = Geocoder.search(params.require(:game)[:place])
     @game = Game.create('place' => params.require(:game)[:place],
                       'date' => params.require(:game)[:date],
                       'description' => params.require(:game)[:description],
-                      'game_format' => params.require(:game)[:game_format])
+                      'game_format' => params.require(:game)[:game_format],
+                      'latitude' => results.first.coordinates.first,
+                      'longitude' => results.first.coordinates.last)
                       #'user_creator_id' => User.find_by(name: "#{$curent_user}").id)
   
     redirect_to games_path
@@ -44,5 +51,5 @@ private
   def game_params
     params.require(:game).permit(:date, :place, :game_format, :description)
   end
- 
+  
 end
