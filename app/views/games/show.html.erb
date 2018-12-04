@@ -1,2 +1,24 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<%= stylesheet_link_tag params[:controller] %>
+<div class="wrapper ">
+  <%= render 'navbar', :layout => 'navbar' %>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header">
+              <h4 class="card-title"> Les parties à venir:</h4>
+            </div>
+                <div class="card-body">
+                  <h2><%=Game.find(@id).date%></h2> <br>
+                  <h2><%=Game.find(@id).place%></h2> <br>
+                  <h2><%=Game.find(@id).game_format%></h2><br>
+                  <p>Date de création: <%=Game.find(@id).created_at%></p>
+                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
+                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Rejoindre la partie</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
