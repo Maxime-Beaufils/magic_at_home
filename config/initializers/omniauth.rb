@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, "fb_KEY", "fb_secret"
+    provider :facebook, ENV["fb_KEY"], ENV["fb_secret"]
     {
         :secure_image_url => 'true',
         :image_size => 'original',
