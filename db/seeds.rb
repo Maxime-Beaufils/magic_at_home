@@ -9,7 +9,13 @@
           "Bordeaux","Lille","Rennes","Reims","Le Havre","Saint-etienne","Toulon","Grenoble","Dijon","Angers","Nîmes","Villeurbanne","Saint-Denis",
           "Le Mans","Aix-en-Provence","Clermont-Ferrand","Brest","Tours","Limoges" ,"Amiens" ,"Annecy","Perpignan" ,"Boulogne-Billancourt",
           "Metz","Besançon","Orléans","Saint-Denis","Argenteuil","Mulhouse","Rouen","Montreuil","Caen"]
-
+          
+          
+Game.create!(place: "Caen", date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg",
+            latitude: Geocoder.search("Caen").first.coordinates.first, longitude: Geocoder.search("Caen").first.coordinates.last)
 200.times do
-  Game.create!(place: @cities.sample, date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg")
+  @city = @cities.sample
+  results = Geocoder.search(@city)
+  Game.create!(place: @city, date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg",
+    latitude: results.first.coordinates.first, longitude: results.first.coordinates.last)
 end

@@ -7,6 +7,8 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.references :user_creator, foregin_key: true
       t.references :user_opponent, foregin_key: true
       t.string :game_format
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

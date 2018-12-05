@@ -6,6 +6,8 @@ ruby '2.5.1'
 gem 'font-awesome-sass'
 gem 'bootstrap'
 
+#geolocalisation
+gem 'geocoder'
 #pagination https://github.com/kaminari/kaminari
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
