@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card card-chart">
         <div class="card-header hover-card-header" onclick="functionReveal()">
-          <p>  </p><h3 class="card-title "><i class="tim-icons icon-send text-success "></i>Créer une nouvelle partie :</h3>
+          <p>  </p><h3 class="card-title "><i class="tim-icons icon-send text-success "></i>Créer une nouvelle partie</h3>
         </div>
         <div class="card-body text-center"  id="card-hide" style="display:none;">
 
@@ -20,41 +20,141 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12">
+    <!-- end create game -->
+    <div class="col-12">
+      <% if params[:search].present?%>
       <div class="card ">
-          <div class="card-header">
-            <h3 class="card-title"> Les parties à venir:</h3>
+        <div class="card-header ">
+          <div class="col-12">
+            <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Rechercher une partie</h3>
+            <nav class="nav nav-tabs" style="border-bottom:0px">
+            <a class="btn btn-sm btn-primary btn-simple" href="#p1" data-toggle="tab">Près de chez vous</a>
+            <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+            <a class="btn btn-sm btn-primary btn-simple active" href="#p3" data-toggle="tab">Près de <%= params[:search] %></a>
+            </nav>
           </div>
-        </button>
+        </div>
         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table tablesorter" >
-              <thead class=" text-primary">
-                <th>Lieu</th>
-                <th>Date</th>
-                <th>Format joué</th>
-                <th>Description</th>
-                <th>Distance</th>
-              </thead>
-              <tbody>
-              <%@games.each do |game| %>
-                <tr>
-                  <td><%= game.place %></td>
-                  <td><%= game.date %></td>
-                  <td><%= game.game_format %></td>
-                  <td><%= game.description %></td>
-                  <td><%= game.distance_to([49.182863,-0.370679].round*1.6%>
-                  <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">Lien</a></td>
-                </tr>
-              <%end%>
-              </tbody>
-            </table>
-            <div class="container pagination justify-content-center">
-              <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+          <div class="tab-content">
+            <div class="tab-pane fade" id="p1">
+              <div class="table-responsive">
+                <table class="table tablesorter" >
+                  <thead class=" text-primary">
+                    <th>Lieu</th>
+                    <th>Date</th>
+                    <th>Format joué</th>
+                    <th>Description</th>
+                    <th>Distance</th>
+                  </thead>
+                  <tbody>
+                  <%@games.each do |game| %>
+                    <tr>
+                      <td><%= game.place %></td>
+                      <td><%= game.date %></td>
+                      <td><%= game.game_format %></td>
+                      <td><%= game.description %></td>
+                      <td><%= game.distance_to([49.182863,-0.370679]).round(2)%> kms </td>
+                      <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                    </tr>
+                  <%end%>
+                  </tbody>
+                </table>
+                <div class="container pagination justify-content-center">
+                  <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade " id="p2">
+              <%= form_tag games_path, :method => :get do%>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+                </p>
+              <% end%>
+            </div>
+            <div class="tab-pane fade show active" id="p3">
+              <div class="table-responsive">
+                <table class="table tablesorter" >
+                  <thead class=" text-primary">
+                    <th>Lieu</th>
+                    <th>Date</th>
+                    <th>Format joué </th>
+                    <th>Description</th>
+                    <th>Distance</th>
+                  </thead>
+                  <tbody>
+                  <%@games_city.each do |game| %>
+                    <tr>
+                      <td><%= game.place %></td>
+                      <td><%= game.date %></td>
+                      <td><%= game.game_format %></td>
+                      <td><%= game.description %></td>
+                      <td><%= game.distance_to(Geocoder.search(params[:search]).first.coordinates).round(2)%> kms </td>
+                      <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                    </tr>
+                  <%end%>
+                  </tbody>
+                </table>
+                <div class="container pagination justify-content-center">
+                  <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% else%>
+      <div class="card ">
+        <div class="card-header ">
+          <div class="col-12">
+            <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Rechercher une partie</h3>
+            <nav class="nav nav-tabs" style="border-bottom:0px">
+            <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Près de chez vous</a>
+            <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+            </nav>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="p1">
+              <div class="table-responsive">
+                <table class="table tablesorter" >
+                  <thead class=" text-primary">
+                    <th>Lieu</th>
+                    <th>Date</th>
+                    <th>Format joué</th>
+                    <th>Description</th>
+                    <th>Distance</th>
+                  </thead>
+                  <tbody>
+                  <%@games.each do |game| %>
+                    <tr>
+                      <td><%= game.place %></td>
+                      <td><%= game.date %></td>
+                      <td><%= game.game_format %></td>
+                      <td><%= game.description %></td>
+                      <td><%= game.distance_to([49.182863,-0.370679]).round(2)%> kms </td>
+                      <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                    </tr>
+                  <%end%>
+                  </tbody>
+                </table>
+                <div class="container pagination justify-content-center">
+                  <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="p2">
+            <%= form_tag games_path, :method => :get do%>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+              </p>
+            <% end%>
+            </div>
+          </div>
+        </div>
+      </div><!-- end search game -->
+    <% end%>
   </div>
 </div>

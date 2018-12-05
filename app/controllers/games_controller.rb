@@ -1,11 +1,14 @@
 class GamesController < ApplicationController
   def index
     @game = Game.new
-
-    @games = Game.all.page(params[:page]).per(10)
-
-    #@games = Game.first.nearbys(30).page(params[:page]).per(10)
-    #@games = Game.first.nearbys(30).page(params[:page]).per(10)
+    if params[:search].present?
+      @games_city = Game.near(params[:search], 150).page(params[:page]).per(10)
+      @games = Game.first.nearbys(150).page(params[:page]).per(10)
+    #@games = Game.all.page(params[:page]).per(10)
+    else
+    #nerbys(n) n=distance en km
+    @games = Game.first.nearbys(150).page(params[:page]).per(10)
+    end
   end
 
   def new
