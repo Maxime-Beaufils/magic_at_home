@@ -7,6 +7,7 @@ gem 'font-awesome-sass'
 gem 'bootstrap'
 
 #geolocalisation
+gem 'leaflet-rails'
 gem 'geocoder'
 #pagination https://github.com/kaminari/kaminari
 gem 'kaminari'
