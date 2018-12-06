@@ -1,5 +1,5 @@
 /***********************
- landing page 
+ landing page
  ************************/
  body{
   background-color: black;
@@ -39,7 +39,7 @@
 .row div{
  width: 50%;
  padding: 20px;
- 
+
 }
 .row div p{
  font-family: 'Gloria Hallelujah', cursive;
@@ -63,7 +63,7 @@
 }
 /**************
 Stepper
-*************/ 
+*************/
 
 .stepper-title {
  text-shadow: 2px 2px 4px #040327c4;
@@ -112,9 +112,9 @@ i {
  color: white;
  font-family: 'Karla';
 /*
- background: #b92b27;  
-background: -webkit-linear-gradient(to right, #1565C0, #051f2f);  
-background: linear-gradient(to right, #1565C0, #051f2f); 
+ background: #b92b27;
+background: -webkit-linear-gradient(to right, #1565C0, #051f2f);
+background: linear-gradient(to right, #1565C0, #051f2f);
 */
  background-image: url("../assets/head-top.jpg");
  background-repeat: no-repeat;
@@ -311,7 +311,7 @@ body {
        font-size: $number-size;
        line-height: $number-size;
        font-weight: 600;
-       
+
      }
      h2 {
        text-transform: uppercase;
@@ -363,4 +363,11 @@ body {
      }
    }
  }
+}
+/* Modal box */
+.modal-content {
+  background-color: rgba(0,0,0,0.5) !important;
+  border: none;
+  height: 100%;
+  margin-left: 250px;
 }

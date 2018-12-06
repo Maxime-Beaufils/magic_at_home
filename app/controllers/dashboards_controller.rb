@@ -4,4 +4,7 @@ class DashboardsController < ApplicationController
 
   def profil
   end
+
+  def log
+  end
 end
