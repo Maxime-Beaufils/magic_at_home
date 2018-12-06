@@ -134,9 +134,7 @@
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
-                    <% if user_signed_in? %>
-                      <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %>
-                    <% end %>
+                    
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
@@ -148,7 +146,9 @@
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-link">
-                    <a href="#" class="nav-item dropdown-item">Log out</a>
+                    <% if user_signed_in? %>
+                      <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %>
+                    <% end %>
                   </li>
                 </ul>
               </li>
