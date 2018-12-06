@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/profil', to: 'dashboards#profil'
   get 'landing_pages/index'
   root 'landing_pages#index'
+  get '/map', to: 'dashboards#map'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
