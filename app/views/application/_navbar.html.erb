@@ -69,7 +69,9 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Profil du joueur <%= current_user.email %></a>
+            <a class="navbar-brand" href="#">Profil du joueur <% if user_signed_in? %>
+                      <%= current_user.email %>
+                    <% end %></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -132,7 +134,9 @@
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
-                    Log out
+                    <% if user_signed_in? %>
+                      <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %>
+                    <% end %>
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
