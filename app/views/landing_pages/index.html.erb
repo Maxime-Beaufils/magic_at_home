@@ -143,14 +143,49 @@ span.psw {
             <div class="row-modal">
               <div class="col-md-9">
 
-                <form class="modal-content animate" action="/action_page.php">
+
+
+
                   <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                   </div>
 
                   <div class="container text-white">
+                    <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Près de chez vous</a>
+                    <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
 
-                    <label for="uname"><b>Username</b></label>
+                      <div class="tab-pane fade show active" id="p1">
+
+                        <%= form_for @user, url: {:controller => 'devise/sessions', action: "create"} do |f| %>
+                          <div class="field">
+                            <%= f.label :email %><br />
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                          </div>
+
+                          <div class="field">
+                            <%= f.label :password %><br />
+                            <%= f.password_field :password, autocomplete: "current-password" %>
+                          </div>
+
+
+                          <div class="actions">
+                            <%= f.submit "Log in" %>
+                          </div>
+                          <% end %>
+
+
+
+                      </div>
+
+
+
+
+                <div class="tab-pane fade show active" id="p2">
+
+                  <%= form_for @user, url: {:controller => 'devise/sessions', action: "create"} do |f| %>
+
+
+                    <label for="uname"><b>Usemdmdkdfjrname</b></label>
                     <input type="text" placeholder="Enter Username" name="uname" required>
 
                     <label for="psw"><b>Password</b></label>
@@ -162,14 +197,19 @@ span.psw {
                       <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>
                     <span class="psw">Forgot <a href="#">password?</a></span>
-                  </div>
+                </div>
 
+                <div class="actions">
+                  <%= f.submit "Log in" %>
+                  <% end %>
+                </div>
 
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
+
 
 </header>
 <section class="intro">
