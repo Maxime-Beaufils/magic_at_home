@@ -4,6 +4,7 @@
  body{
   background-color: black;
   overflow-x: hidden;
+
 }
 .business-header {
  height: 640px;
@@ -17,6 +18,7 @@
  -o-background-size: cover;
  margin-top: 30px;
  animation: shrink 15s infinite alternate;
+
 }
 @keyframes shrink {
  0% {
@@ -46,12 +48,14 @@
  color: white;
  font-size: 30px;
  text-shadow: 2px 2px 4px #000000;
+
 }
 .tagline {
  font-family: 'Pacifico', cursive;
  font-size: 55px;
  color: white;
  text-shadow: 2px 2px 4px #040327c4;
+
 }
 .btn-md {
  font-family: 'Karla';
@@ -101,6 +105,7 @@ $items: 5;
 $rows: ceil($items/2);
 #timeline {
  font-family: "Karla";
+
 }
 i {
  color: white;
@@ -111,6 +116,7 @@ i {
  margin-top: 20px;
  color: white;
  font-family: 'Karla';
+
 /*
  background: #b92b27;
 background: -webkit-linear-gradient(to right, #1565C0, #051f2f);
@@ -121,6 +127,7 @@ background: linear-gradient(to right, #1565C0, #051f2f);
  background-size: cover;
  padding: 100px;
  box-shadow: 5px 5px 10px #1b1a24c4;
+
 }
 
 .container {
@@ -128,6 +135,7 @@ background: linear-gradient(to right, #1565C0, #051f2f);
  max-width: 1200px;
  margin: 0 auto;
  text-align: center;
+
 }
 
 h1 {
@@ -135,6 +143,7 @@ h1 {
 }
 .head{
  background-image: url("../assets/head.jpg");
+
 }
 
 /* Card sizing */
@@ -206,6 +215,7 @@ $counter: $items - $rows + 2;
 
 body {
  font-family: Roboto;
+
 }
 
 #timeline {
@@ -213,17 +223,20 @@ body {
  background: $background;
  border-top: $border;
  border-bottom: $border;
+
  h1 {
    text-align: center;
    font-size: 3rem;
    font-weight: 200;
    margin-bottom: 20px;
+
  }
  p.leader {
    text-align: center;
    max-width: 90%;
    margin: auto;
    margin-bottom: 45px;
+
  }
  .demo-card-wrapper {
    position: relative;
@@ -234,9 +247,10 @@ body {
      width: $container-width;
      height: $container-height;
      margin: 0 auto;
+
    }
    &::after {
-     z-index: 1;
+
      content: "";
      position: absolute;
      top: 0;
@@ -245,6 +259,7 @@ body {
      border-left: $border;
      @include mq-lg {
        border-left: 1px solid $timeline;
+
      }
    }
  }
@@ -253,13 +268,15 @@ body {
    display: block;
    margin: 10px auto 80px;
    max-width: 94%;
-   z-index: 2;
+
    @include mq-sm {
      max-width: 60%;
      box-shadow: $box-shadow;
+
    }
    @include mq-md {
      max-width: 40%;
+
    }
    @include mq-lg {
      max-width: $card-width;
@@ -267,6 +284,7 @@ body {
      margin: $outer-margin;
      margin-top: $outer-margin/2;
      margin-bottom: $outer-margin/2;
+
      &:nth-child(odd) {
        margin-right: $outer-margin/2;
        .head::after {
@@ -274,10 +292,12 @@ body {
          border-left-width: 15px;
          border-left-style: solid;
          left: 100%;
+
        }
        .head::before {
          @extend %marker;
          left: $marker-dist + 1;
+
        }
      }
      &:nth-child(even) {
@@ -287,14 +307,17 @@ body {
          border-right-width: 15px;
          border-right-style: solid;
          right: 100%;
+          z-index: 1;
        }
        .head::before {
          @extend %marker;
          right: $marker-dist - 1;
+
        }
      }
      &:nth-child(2) {
        margin-top: $stagger;
+
      }
    }
    .head {
@@ -312,6 +335,7 @@ body {
        line-height: $number-size;
        font-weight: 600;
 
+
      }
      h2 {
        text-transform: uppercase;
@@ -324,6 +348,7 @@ body {
        @include mq-sm {
          font-size: 165%;
          line-height: 1.2rem;
+
        }
        span {
          display: block;
@@ -331,6 +356,7 @@ body {
          margin: 0;
          @include mq-sm {
            font-size: 0.8rem;
+
          }
        }
      }
@@ -342,15 +368,18 @@ body {
      padding: $inner-margin;
      @include mq-lg {
        height: $body-height;
+
      }
      p {
        font-size: 14px;
        line-height: 18px;
        margin-bottom: $inner-margin;
+
      }
      img {
        display: block;
        width: 100%;
+        ;
      }
    }
    @for $i from 1 through $items {
@@ -359,15 +388,27 @@ body {
        background-color: $color;
        .head::after {
          border-color: $color;
+
        }
      }
    }
  }
 }
 /* Modal box */
+.row-modal{
+
+  filter: alpha(opacity=20) !important;
+}
 .modal-content {
-  background-color: rgba(0,0,0,0.5) !important;
+  background-image: url('../assets/bg2.jpg') !important;
   border: none;
-  height: 100%;
+  height: 80%;
+  width: 80%;
   margin-left: 250px;
+  z-index: 200 !important;
+}
+/* Button close*/
+.close {
+  color: red;
+
 }
