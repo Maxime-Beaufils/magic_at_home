@@ -139,44 +139,42 @@ span.psw {
             </div>
         </div>
         <div class="container-modal">
+          <div id="id01" class="modal">
+            <div class="row-modal">
+              <div class="col-md-9">
 
-        <div id="id01" class="modal">
-          <div class="row">
-            <div class="col-md-9">
+                <form class="modal-content animate" action="/action_page.php">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  </div>
 
-          <form class="modal-content animate" action="/action_page.php">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  <div class="container text-white">
+
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <button class="btn btn-primary" type="submit">Login</button>
+
+                    <label>
+                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                  </div>
 
 
+                </form>
+              </div>
             </div>
-
-            <div class="container">
-              <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required>
-
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-
-              <button type="submit">Login</button>
-              <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-              </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-              <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
-
 
 </header>
 <section class="intro">
   <div class="container">
-    <h1 class="stepper-title">Coment ça marche ? &darr;</h1>
+    <h1 class="stepper-title">Comment ça marche ? &darr;</h1>
   </div>
 </section>
 
