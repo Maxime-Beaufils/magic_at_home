@@ -10,13 +10,13 @@
                 <h5 class="title">Modifiez votre profil</h5>
               </div>
               <div class="card-body">
-                <%= form_for @user, url: {:controller => 'devise/registrations', action: "update"} do |f| %>
+                <%= form_for @profil, url: { action: "patch"} do |f| %>
                   <div class="row">
                     <div class="col-md-3 px-md-3">
                       <div class="form-group">
                         <label>Pseudo</label>
-                            <% if @user.name != nil %>
-                        <input type="text" class="form-control" placeholder="name" value="<%= @user.name %>">
+                            <% if @profil.username != nil %>
+                        <input type="text" class="form-control" placeholder="name" value="<%= @profil.name %>">
                             <% else %>
                         <input type="text" class="form-control" placeholder="name" value="pseudo ...">
                             <% end %>

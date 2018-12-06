@@ -4,5 +4,6 @@ class DashboardsController < ApplicationController
   end
 
   def profil
+    @user = current_user
   end
 end

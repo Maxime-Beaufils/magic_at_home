@@ -16,4 +16,6 @@ Rails.application.config.assets.paths << Rails.root.join('lib')
 Rails.application.config.assets.precompile += %w( landing_pages.scss )
 Rails.application.config.assets.precompile += %w( dashboards.scss )
 Rails.application.config.assets.precompile += %w( games.scss )
+Rails.application.config.assets.precompile += %w( profile.scss )
+
 Rails.application.config.assets.precompile += %w( *.png *.gif *.jpg *.ico *.svg *.eot *.ttf *.woff *.woff2)
