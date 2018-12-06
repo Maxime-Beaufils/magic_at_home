@@ -5,7 +5,8 @@ ruby '2.5.1'
 
 gem 'font-awesome-sass'
 gem 'bootstrap'
-
+#mailer development
+gem 'mailcatcher'
 #geolocalisation
 gem 'geocoder'
 #pagination https://github.com/kaminari/kaminari

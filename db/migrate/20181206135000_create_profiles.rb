@@ -1,7 +1,6 @@
 class CreateProfiles < ActiveRecord::Migration[5.2]
   def change
     create_table :profiles do |t|
-      t.references :user, foregin_key: true
       t.string :username
       t.string :country
       t.string :city
