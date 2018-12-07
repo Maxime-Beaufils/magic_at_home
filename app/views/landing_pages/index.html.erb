@@ -51,16 +51,17 @@
               <div class="col-md-9">
                 <div class="modal-content-log">
                 <div class="imgcontainer">
-                  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
                 <div class="container text-white">
+
                     <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Près de chez vous</a>
                     <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
                   <div class="tab-pane fade show active" id="p1">
                     <%= form_for @user, url: {:controller => 'devise/registrations', action: "create"} do |f| %>
                     <div class="field">
                       <%= f.label :email %><br />
-                      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                      <%= f.email_field :email,autocomplete: "email" %>
                     </div>
 
                     <div class="field">
