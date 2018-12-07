@@ -6,9 +6,17 @@ Rails.application.routes.draw do
 
   get 'dashboards/index', to: 'dashboards#index'
   get '/profil', to: 'profile#edit'
+  patch '/profil', to: 'profile#update'
   get 'landing_pages/index'
   root 'landing_pages#index'
 
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  devise_for :users, controllers: { registrations: 'users/registrations' }, as:  '/sign_in'
+
+  devise_for :users, 
+                    controllers: {
+                                    confirmations: 'users/confirmations' ,
+                                    omniauth_callbacks: "users/omniauth_callbacks" ,
+                                    passwords: 'users/passwords' ,
+                                    registrations: 'users/registrations' ,
+                                    sessions: 'users/sessions' ,
+                                    unlocks: 'users/unlocks' }
 end
