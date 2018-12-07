@@ -3,10 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1' 
 
+#front
 gem 'font-awesome-sass'
 gem 'bootstrap'
-#mailer development
-gem 'mailcatcher'
+#registration
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 #geolocalisation
 gem 'leaflet-rails'
 gem 'geocoder'
@@ -26,11 +31,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-gem 'devise'
-gem 'devise-i18n'
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-facebook'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -57,6 +57,9 @@ group :development, :test do
 end
 
 group :development do
+
+  #mailer development
+  gem 'mailcatcher'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
