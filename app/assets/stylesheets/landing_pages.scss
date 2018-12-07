@@ -527,8 +527,8 @@ body {
 .modal-content-log {
   background-image: url('../assets/bg2.jpg') !important;
   border-radius: 1px;
-  height: 80%;
-  width: 80%;
+
+  width: 100%;
   margin-left: 250px;
   z-index: 200 !important;
 }
@@ -538,4 +538,8 @@ body {
 }
 .close-2 {
   color: red;
+}
+.container-modal{
+  z-index: 200 !important;
+  border: aqua;
 }
