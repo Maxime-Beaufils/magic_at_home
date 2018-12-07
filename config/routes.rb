@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get 'landing_pages/index'
   root 'landing_pages#index'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  #devise_for :users, controllers: { registrations: 'users/registrations' }  
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { registrations: 'users/registrations' }, as:  '/sign_in'
 end
