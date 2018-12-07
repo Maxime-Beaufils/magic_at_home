@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MagicAtHome</title>
+    <title>Magic At Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,7 +18,14 @@
       <div class="alert alert-danger"> <%= flash[:danger] %> </div>
     <%end%>
     <% if flash[:notice] %>
-      <div class="alert alert-danger"> <%= flash[:notice] %> </div>
+      <div class="alert alert-success alert-dismissible fade show col-ms-9"> <%= flash[:notice] %> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="tim-icons icon-simple-remove"></i>
+      </button>
+      </div>
+    <%end%>
+    <% if flash[:info] %>
+      <div class="alert alert-info"> <%= flash[:info] %> </div>
     <%end%>
 
     <%= yield %>

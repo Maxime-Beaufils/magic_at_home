@@ -10,15 +10,15 @@
                 <h5 class="title">Modifiez votre profil</h5>
               </div>
               <div class="card-body">
-                <%= form_for @user, url: {:controller => 'devise/registrations', action: "update"} do |f| %>
+                <%= form_for @profile, url: { action: "update"} do |f| %>
                   <div class="row">
                     <div class="col-md-3 px-md-3">
                       <div class="form-group">
                         <label>Pseudo</label>
-                            <% if @user.name != nil %>
-                        <input type="text" class="form-control" placeholder="name" value="<%= @user.name %>">
+                            <% if @profile.username != nil %>
+                            <%= f.text_field :username, class: "form-control", value: @profile.username %><br>
                             <% else %>
-                        <input type="text" class="form-control" placeholder="name" value="pseudo ...">
+                             <%= f.text_field :username, class: "form-control", placeholder: "" %><br>
                             <% end %>
                       </div>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="block block-three"></div>
                     <div class="block block-four"></div>
                     <a href="#">
-                      <img class="avatar" src="../assets/anime6.png" alt="...">
+                      <img class="avatar" src="/assets/anime6.png" alt="...">
                       <h5 class="title">godefroy de montmirail</h5>
                     </a>
                     <p class="description">

@@ -5,7 +5,8 @@ ruby '2.5.1'
 
 gem 'font-awesome-sass'
 gem 'bootstrap'
-
+#mailer development
+gem 'mailcatcher'
 #geolocalisation
 gem 'leaflet-rails'
 gem 'geocoder'
@@ -26,6 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
+gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
