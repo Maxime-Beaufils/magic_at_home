@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag params[:controller] %>
 <div class="wrapper ">
   <%= render 'navbar', :layout => 'navbar' %>
+  <%= render 'alert', :layout => 'alert' %>
     <div class="content">
       <div class="row">
         <div class="col-md-12">
@@ -9,14 +10,16 @@
               <h4 class="card-title"> Les parties à venir:</h4>
             </div>
                 <div class="card-body">
-                  <h2><%=Game.find(@id).date%></h2> <br>
-                  <h2><%=Game.find(@id).place%></h2> <br>
-                  <h2><%=Game.find(@id).game_format%></h2><br>
-                  <p>Date de création: <%=Game.find(@id).created_at%></p>
-                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
-                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Rejoindre la partie</a>
+                  <h2><%=@game.date%></h2> <br>
+                  <h2><%=@game.place%></h2> <br>
+                  <h2><%=@game.game_format%></h2><br>
+                  <p>Date de création: <%=@game.created_at%></p>
+                  <% if User.find(@game.user_creator_id).id == current_user.id %>
+                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
+                  <% else %>
+                    <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                  <% end %>
                 </div>
-              </div>
           </div>
         </div>
       </div>

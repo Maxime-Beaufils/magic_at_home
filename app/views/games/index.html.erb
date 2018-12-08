@@ -40,19 +40,29 @@
               <div class="table-responsive">
                 <table class="table tablesorter" >
                   <thead class=" text-primary">
+                    <th>Créateur</th>
                     <th>Lieu</th>
                     <th>Date</th>
                     <th>Format joué</th>
-                    <th>Description</th>
+                    <th>Adversaire</th>
                     <th>Distance</th>
                   </thead>
                   <tbody>
                   <%@games.each do |game| %>
                     <tr>
+                      <td><% if game.user_creator_id? %>
+                            <%= Profile.find(game.user_creator_id).username %>
+                          <% end %>
+                      </td>
                       <td><%= game.place %></td>
-                      <td><%= game.date %></td>
+                      <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
-                      <td><%= game.description %></td>
+                      <td><% if game.user_opponent_id? %>
+                            <%= User.find(game.user_opponent_id).profile.username %>
+                          <% else %>
+                            -
+                          <% end %>
+                      </td>
                       <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
                       <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
                     </tr>
@@ -76,19 +86,29 @@
               <div class="table-responsive">
                 <table class="table tablesorter" >
                   <thead class=" text-primary">
+                    <th>Créateur</th>
                     <th>Lieu</th>
                     <th>Date</th>
-                    <th>Format joué </th>
-                    <th>Description</th>
+                    <th>Format joué</th>
+                    <th>Adversaire</th>
                     <th>Distance</th>
                   </thead>
                   <tbody>
                   <%@games_city.each do |game| %>
                     <tr>
+                      <td><% if game.user_creator_id? %>
+                            <%= Profile.find(game.user_creator_id).username %>
+                          <% end %>
+                      </td>
                       <td><%= game.place %></td>
-                      <td><%= game.date %></td>
+                      <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
-                      <td><%= game.description %></td>
+                      <td><% if game.user_opponent_id? %>
+                            <%= User.find(game.user_opponent_id).profile.username %>
+                          <% else %>
+                            -
+                          <% end %>
+                      </td>
                       <td><%= game.distance_to(Geocoder.search(params[:search]).first.coordinates).round(2)%> kms </td>
                       <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
                     </tr>
@@ -120,19 +140,31 @@
               <div class="table-responsive">
                 <table class="table tablesorter" >
                   <thead class=" text-primary">
+                    <th>Créateur</th>
                     <th>Lieu</th>
                     <th>Date</th>
                     <th>Format joué</th>
-                    <th>Description</th>
+                    <th>Adversaire</th>
                     <th>Distance</th>
                   </thead>
                   <tbody>
                   <%@games.each do |game| %>
                     <tr>
+                      <td><% if game.user_creator_id? %>
+                            <a href="/profile/<%= game.user_creator_id %>"><img class="photo-game" src="/assets/anime6.png"></a> 
+                            <%= Profile.find(game.user_creator_id).username %>
+                          <% end %>
+                      </td>
                       <td><%= game.place %></td>
-                      <td><%= game.date %></td>
+                      <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
-                      <td><%= game.description %></td>
+                      <td><% if game.user_opponent_id? %>
+                            <img class="photo-game" src="/assets/Jacquouille.jpg"></a>
+                            <%= User.find(game.user_opponent_id).profile.username %>
+                          <% else %>
+                            <img class="photo-game" src="/assets/Jacquouille.jpg"></a> -
+                          <% end %>
+                      </td>
                       <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
                       <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
                     </tr>

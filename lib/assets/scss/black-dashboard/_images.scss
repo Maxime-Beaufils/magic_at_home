@@ -5,3 +5,20 @@ img{
 .img-raised{
     box-shadow: $box-shadow-raised;
 }
+.photo-game {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+    overflow: hidden;
+      img{
+        width: 100%;
+      }
+  }
+
+  .photo-game:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+  }
