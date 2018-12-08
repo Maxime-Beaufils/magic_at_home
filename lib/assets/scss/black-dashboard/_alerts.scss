@@ -4,7 +4,11 @@
     color: $white-color;
     padding-top: .9rem;
     padding-bottom: .9rem;
-    position: relative;
+    width: 25%;
+    position: absolute;
+    
+    left: 49%;
+
 
     .alert-link{
       color: $white-color;

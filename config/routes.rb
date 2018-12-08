@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+
+  root 'landing_pages#index'
+  get 'landing_pages/index'
+
   resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   resources :profile, only: [:index, :show, :edit, :update]
-  
-
-  get 'dashboards/index', to: 'dashboards#index'
   get '/profil', to: 'profile#edit'
   patch '/profil', to: 'profile#update'
-  get 'landing_pages/index'
-  root 'landing_pages#index'
+  
+  get '/map', to: 'dashboards#map'
 
 
   devise_for :users, 

@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
     @profile = @user.profile
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to(edit_profile_path(@profile), :notice => 'Votre profil a été mis a jour.') }
+        format.html { redirect_to '/profil', :notice => 'Votre profil a été mis a jour.' }
      else
        format.html { render :action => "edit" }
       end
