@@ -3,13 +3,13 @@ class GamesController < ApplicationController
   
   def index
     @game = Game.new
+    @cup = current_user.profile
     if params[:search].present?
       @games_city = Game.near(params[:search], 150).page(params[:page]).per(10)
-      @games = Game.first.nearbys(150).page(params[:page]).per(10)
-    #@games = Game.all.page(params[:page]).per(10)
+      @games = Game.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
     else
     #nerbys(n) n=distance en km
-    @games = Game.first.nearbys(150).page(params[:page]).per(10)
+    @games = Game.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
     end
   end
 
@@ -24,8 +24,8 @@ class GamesController < ApplicationController
                       'description' => params.require(:game)[:description],
                       'game_format' => params.require(:game)[:game_format],
                       'latitude' => results.first.coordinates.first,
-                      'longitude' => results.first.coordinates.last)
-                      #'user_creator_id' => User.find_by(name: "#{$curent_user}").id)
+                      'longitude' => results.first.coordinates.last,
+                      'user_creator_id' => current_user.id)
   
     redirect_to games_path
   end

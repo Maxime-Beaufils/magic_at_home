@@ -22,48 +22,87 @@
                             <% end %>
                       </div>
                     </div>
-                    <div class="col-md-4 pl-md-3">
+                  <div class="col-md-4 pl-md-3">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">adresse mail</label>
-                        <input type="email" class="form-control" placeholder="mike@email.com">
+                        <label for="exampleInputEmail1">email</label>
+                        <% if @user.email != nil %>
+                            <p class="form-control"> <%= @user.email %></p>
+                            <% else %>
+                        <% end %>
                       </div>
-                    </div>
+                    </div> 
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                      <h4>Adresse :</h4>
                         <label>Rue (facultatif)</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                        <% if @profile.street != nil %>
+                            <%= f.text_field :street, class: "form-control", value: @profile.street %><br>
+                            <% else %>
+                             <%= f.text_field :street, class: "form-control", placeholder: "" %><br>
+                        <% end %>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
                     <div class="col-md-4 pr-md-1">
                       <div class="form-group">
+                        <label>Code Postal</label>
+                        <% if @profile.zip != nil %>
+                            <%= f.text_field :zip, class: "form-control", value: @profile.zip %><br>
+                            <% else %>
+                             <%= f.text_field :zip, class: "form-control", placeholder: "" %><br>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-md-1">
+                      <div class="form-group">
                         <label>Ville</label>
-                        <input type="text" class="form-control" placeholder="Ville" value="Caen">
+                        <% if @profile.city != nil %>
+                            <%= f.text_field :city, class: "form-control", value: @profile.city %><br>
+                            <% else %>
+                             <%= f.text_field :city, class: "form-control", placeholder: "" %><br>
+                        <% end %>
                       </div>
                     </div>
                     <div class="col-md-4 px-md-1">
                       <div class="form-group">
                         <label>Pays</label>
-                        <input type="text" class="form-control" placeholder="Pays" value="France">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-md-1">
-                      <div class="form-group">
-                        <label>Code Postal</label>
-                        <input type="number" class="form-control" placeholder="ZIP Code" value="14440">
+                        <% if @profile.country != nil %>
+                            <%= f.text_field :country, class: "form-control", value: @profile.country %><br>
+                            <% else %>
+                             <%= f.text_field :country, class: "form-control", placeholder: "" %><br>
+                        <% end %>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <h4>Adresse :</h4>
                         <label>Biographie</label>
-                        <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                        <% if @profile.bio != nil %>
+                            <%= f.text_area :bio, class: "form-control", value: @profile.bio %><br>
+                            <% else %>
+                             <%= f.text_area :bio, class: "form-control", placeholder: "" %><br>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Couleur jouée </label>
+                        <% if @profile.favorite_color != nil %>
+                            <%= f.text_field :favorite_color, class: "form-control", value: @profile.favorite_color %><br>
+                            <% else %>
+                             <%= f.text_field :favorite_color, class: "form-control", placeholder: "" %><br>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Format joué </label>
+                        <% if @profile.favorite_format != nil %>
+                            <%= f.text_field :favorite_format, class: "form-control", value: @profile.favorite_format %><br>
+                            <% else %>
+                             <%= f.text_field :favorite_format, class: "form-control", placeholder: "" %><br>
+                        <% end %>
                       </div>
                     </div>
                   </div>

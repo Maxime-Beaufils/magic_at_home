@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card card-chart">
         <div class="card-header hover-card-header" onclick="functionReveal()">
-          <p>  </p><h3 class="card-title "><i class="tim-icons icon-send text-success "></i>Créer une nouvelle partie</h3>
+          <h3 class="card-title "><i class="tim-icons icon-send text-success "></i>Créer une nouvelle partie</h3>
         </div>
         <div class="card-body text-center"  id="card-hide" style="display:none;">
 
@@ -53,7 +53,7 @@
                       <td><%= game.date %></td>
                       <td><%= game.game_format %></td>
                       <td><%= game.description %></td>
-                      <td><%= game.distance_to([49.182863,-0.370679]).round(2)%> kms </td>
+                      <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
                       <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
                     </tr>
                   <%end%>
@@ -133,7 +133,7 @@
                       <td><%= game.date %></td>
                       <td><%= game.game_format %></td>
                       <td><%= game.description %></td>
-                      <td><%= game.distance_to([49.182863,-0.370679]).round(2)%> kms </td>
+                      <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
                       <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
                     </tr>
                   <%end%>
