@@ -524,14 +524,26 @@ body {
   filter: alpha(opacity=50);
 
 }
+.container-modal{
+
+
+}
 .modal-content-log {
   background-image: url('../assets/bg2.jpg') !important;
-  border-radius: 1px;
-
-  width: 100%;
-  margin-left: 250px;
-  z-index: 200 !important;
+  border-radius: 10px;
+  width: 400px;
+  margin:0 auto;
 }
+.field {
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  margin:0 auto;
+  border-radius: 10px;
+  padding-bottom: 40px;
+
+}
+
 /* Button close*/
 .close {
   color: red;
