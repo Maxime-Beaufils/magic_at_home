@@ -1,23 +1,110 @@
 <%= stylesheet_link_tag params[:controller] %>
 <div class="wrapper ">
   <%= render 'navbar', :layout => 'navbar' %>
+  <%= render 'alert', :layout => 'alert' %>
     <div class="content">
       <div class="row">
-        <div class="col-md-12">
+
+      <!-- creator player -->
+          <div class="col-md-3">
+            <div class="card  card-user">
+              <div class="card-body ">
+                <p class="card-text">
+                  <div class="author">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    <a href="#">
+                      <img class="avatar" src="/assets/anime6.png" alt="...">
+                      <h5 class="title"><%= User.find(@game.user_creator_id).profile.username %></h5>
+                    </a>
+                    <p class="description">
+                      Créateur de la partie
+                    </p>
+                  </div>
+                </p>
+                <h4 class="card-description text-center">
+                de <%= User.find(@game.user_creator_id).profile.city %><br>
+                Format préféré : <%= User.find(@game.user_creator_id).profile.favorite_format %><br>
+                Couleur de prédilection : <%= User.find(@game.user_creator_id).profile.favorite_color %><br>
+                </h4>
+              </div>
+            </div>
+          </div>
+
+    <!-- game -->
+        <div class="col-md-4 text-center">
+          <i class="fas fa-dice-d20 " style="color:white; font-size:50px; margin-bottom:20px;"></i>
           <div class="card ">
             <div class="card-header">
-              <h4 class="card-title"> Les parties à venir:</h4>
+              <h4 class="card-title float-left"> La partie </h4>
             </div>
                 <div class="card-body">
-                  <h2><%=Game.find(@id).date%></h2> <br>
-                  <h2><%=Game.find(@id).place%></h2> <br>
-                  <h2><%=Game.find(@id).game_format%></h2><br>
-                  <p>Date de création: <%=Game.find(@id).created_at%></p>
-                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
-                  <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Rejoindre la partie</a>
+                  <h2>Format joué: <%=@game.game_format%></h2><br>
+                  <h2><i class="fas fa-calendar-alt"></i><%=  @game.date.strftime(' %d-%m-%Y')%></h2> <br>
+                  <h2><i class="fas fa-map-pin"></i> <%=@game.place%></h2> <br>
+                  <h3><%=@game.description%></h3>
+                  <% if @game.user_creator_id == current_user.id %>
+                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
+                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Supprimer la partie</a>
+                  <% else %>
+                      <% if @game.user_opponent_id == nil %>
+                          <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                      <% elsif @game.user_opponent_id == current_user.id%>
+                          <%= button_to "Quitter la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                      <% end %>
+                  <% end %>
                 </div>
-              </div>
           </div>
+        </div>
+
+    <!-- opponent player -->
+        <div class="col-md-3">
+            <div class="card  card-user">
+              <div class="card-body ">
+              <% if @game.user_opponent_id == nil %>
+                <p class="card-text">
+                  <div class="author">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    
+                      <i class="avatar fas fa-user-slash" style="color:white; font-size:100px;"></i>
+                      <h5 class="title">disponible</h5>
+                    
+                    <p class="description">
+                      Aucun adversaire
+                    </p>
+                  </div>
+                </p>
+                <h4 class="card-description text-center">
+                </h4>
+              <% else %>
+                <p class="card-text">
+                  <div class="author">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    <a href="#">
+                      <img class="avatar" src="/assets/Jacquouille.jpg" alt="...">
+                      <h5 class="title"><%= User.find(@game.user_opponent_id).profile.username %></h5>
+                    </a>
+                    <p class="description">
+                      Adversaire
+                    </p>
+                  </div>
+                </p>
+                <h4 class="card-description text-center">
+                de <%= User.find(@game.user_opponent_id).profile.city %><br>
+                Format préféré : <%= User.find(@game.user_opponent_id).profile.favorite_format %><br>
+                Couleur de prédilection : <%= User.find(@game.user_opponent_id).profile.favorite_color %><br>
+                </h4>
+              <% end %>
+              </div>
+            </div>
         </div>
       </div>
     </div>

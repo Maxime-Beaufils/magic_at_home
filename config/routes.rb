@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'landing_pages/index'
 
   resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  post 'games/:id', to: 'games#join_game'
 
   resources :profile, only: [:index, :show, :edit, :update]
   get '/profil', to: 'profile#edit'
