@@ -4,24 +4,83 @@
   <%= render 'alert', :layout => 'alert' %>
     <div class="content">
       <div class="row">
-        <div class="col-md-12">
+
+
+          <div class="col-md-3">
+            <div class="card  card-user">
+              <div class="card-body ">
+                <p class="card-text">
+                  <div class="author">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    <a href="#">
+                      <img class="avatar" src="/assets/anime6.png" alt="...">
+                      <h5 class="title"><%= User.find(@game.user_creator_id).username %></h5>
+                    </a>
+                    <p class="description">
+                      Ceo/Co-Founder
+                    </p>
+                  </div>
+                </p>
+                <p class="card-description">
+                  Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="col-md-4 text-center">
+          <i class="fas fa-dice-d20 " style="color:white; font-size:50px; margin-bottom:20px;"></i>
           <div class="card ">
             <div class="card-header">
-              <h4 class="card-title"> Les parties à venir:</h4>
+              <h4 class="card-title float-left"> La partie </h4>
             </div>
                 <div class="card-body">
-                  <h2><%=@game.date%></h2> <br>
-                  <h2><%=@game.place%></h2> <br>
-                  <h2><%=@game.game_format%></h2><br>
-                  <p>Date de création: <%=@game.created_at%></p>
-                  <% if User.find(@game.user_creator_id).id == current_user.id %>
+                  <h2>Format joué: <%=@game.game_format%></h2><br>
+                  <h2><i class="fas fa-calendar-alt"></i><%=  @game.date.strftime(' %d-%m-%Y')%></h2> <br>
+                  <h2><i class="fas fa-map-pin"></i> <%=@game.place%></h2> <br>
+                  <h3><%=@game.description%></h3>
+                  <% if @game.user_creator_id == current_user.id %>
                     <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
+                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Supprimer la partie</a>
                   <% else %>
-                    <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                      <% if @game.user_opponent_id == nil %>
+                          <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                      <% elsif @game.user_opponent_id == current_user.id%>
+                          <%= button_to "Quitter la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                      <% end %>
                   <% end %>
                 </div>
           </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="card  card-user">
+              <div class="card-body ">
+                <p class="card-text">
+                  <div class="author">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    <a href="#">
+                      <img class="avatar" src="/assets/Jacquouille.jpg" alt="...">
+                      <h5 class="title">godefroy de montmirail</h5>
+                    </a>
+                    <p class="description">
+                      Ceo/Co-Founder
+                    </p>
+                  </div>
+                </p>
+                <p class="card-description">
+                  Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
 </div>

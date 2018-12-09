@@ -48,8 +48,13 @@ class GamesController < ApplicationController
 
   def join_game
     @game = Game.find(params[:id])
-    @game.update(user_opponent_id: current_user.id)
-    redirect_to game_path(@game.id), :notice => 'Vous avez rejoins la partie.'
+    if @game.user_opponent_id == current_user.id
+        @game.update(user_opponent_id: nil)
+        redirect_to game_path(@game.id), :notice => 'Vous avez quitté la partie.'
+    else
+        @game.update(user_opponent_id: current_user.id)
+        redirect_to game_path(@game.id), :notice => 'Vous avez rejoins la partie.'
+    end
   end
 
   def delete
