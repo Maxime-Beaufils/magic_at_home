@@ -13,6 +13,8 @@
           
 Game.create!(place: "Caen", date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg",
             latitude: Geocoder.search("Caen").first.coordinates.first, longitude: Geocoder.search("Caen").first.coordinates.last)
+
+
 200.times do
   @city = @cities.sample
   results = Geocoder.search(@city)

@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   has_many :game_comments
 
   def address
-    [place]
+    [place].compact.join(', ')
   end
   geocoded_by :address
 

@@ -70,7 +70,7 @@
               </button>
             </div>
             <a class="navbar-brand" href="#">Profil du joueur <% if user_signed_in? %>
-                      <%= current_user.email %>
+                      <br><%= current_user.profile.username %>
                     <% end %></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
