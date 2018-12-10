@@ -1,5 +1,7 @@
 class GameCommentsController < ApplicationController
-
+  def new
+    @comments = GameComment.new
+  end
   def create
     @game = Game.find(params[:game_id])
     @comments = @game.game_comments.create(comment_params)

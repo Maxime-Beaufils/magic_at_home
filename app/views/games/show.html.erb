@@ -113,47 +113,37 @@
             <div class="card-header">
               <h4 class="card-title float-left"> Commentaires : </h4>
             </div>
-            <div class="card-body">
-              <table>
-                <thead>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>auteur</td> <td>Contenu</td> <td>Lien vers le comm'</td>
-                  </tr>
-                  <% @game.game_comments.each do |comment|%>
-                  <tr>
-                    <td><%= comment.username %></td>
-                    <td><%= comment.body%></td>
-                    <td><%= link_to "Editer le com", edit_game_game_comment_path(@game) %></td>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= link_to "Retour à l'Accueil", '/' %>
-
-
-
-              <h2>Ajouter un commentaire:</h2>
-              <%= form_with(model: [ @game, @game.game_comments.build ], local: true) do |form| %>
+            <div class="card-body text-center">
+                <%= form_with(model: [ @game, @game.game_comments.build ], local: true) do |form| %>
                 <p>
-                  <% form.text_field :username, value: current_user.profile.username %>
+                  <%= form.text_field :username, value: current_user.profile.username, class:"form-control" %>
                 </p>
                 <p>
-                  <%= form.label :content%><br>
-                  <%= form.text_area :body %>
+                  <%= form.text_area :body, class:"form-control" %>
                 </p>
                 <p>
-                  <%= form.submit %>
+                  <%= form.submit 'Ajouter un commentaire', class: 'btn btn-primary' %>
                 </p>
               <% end %>
-
-              <%= link_to 'Clique pour détruire', game_path(@game), method: :delete, class:"btn btn-danger",
-              data: { confirm: "ARE YOU SURE ????"} %>
             </div>
+            <% if @game.game_comments.present? %>
+              <% @game.game_comments.each do |comment|%>
+                <div class="row comments mb-4 text-center">
+                  <div class="col-sm-2">
+                    <img id="profile-photo" src="/assets/Jacquouille.jpg" class="rounded-circle" style="width:50px;" />
+                    <h4 class="m-0"><%= comment.username %></h4>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="text-white ml-3"><%= comment.created_at %></p>
+                      <p class="mb-0 text-white"><%= comment.body%></p>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+            <% end %>
           </div>
         </div>
+        <!-- end comments -->
       </div>
     </div>
 </div>
