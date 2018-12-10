@@ -522,17 +522,21 @@ body {
 .row-modal{
 
   filter: alpha(opacity=50);
+  margin:0 auto;
+  padding-left: 300px;
 
 }
 .container-modal{
 
-
 }
+
 .modal-content-log {
   background-image: url('../assets/bg2.jpg') !important;
   border-radius: 10px;
   width: 400px;
+  height: 450px;
   margin:0 auto;
+
 }
 .field {
   width: 200px;
@@ -541,9 +545,15 @@ body {
   margin:0 auto;
   border-radius: 10px;
   padding-bottom: 40px;
-
+  font-family: Pacifico;
+  font-size: 20;
 }
-
+.btn{
+font-family: Pacifico;
+font-size: 20;
+margin-bottom: 20px;
+margin-top: 10px;
+}
 /* Button close*/
 .close {
   color: red;

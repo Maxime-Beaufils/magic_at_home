@@ -13,10 +13,11 @@
                 </div>
             </div>
         </div>
+<!-- modal se connecter -->
         <div class="container-modal">
           <div id="id01" class="modal">
-            <div class="row-modal">
-              <div class="col-md-9">
+            <div class="row-modal ">
+              <div class="col-md-9 ">
                 <div class="modal-content-log">
                 <div class="imgcontainer">
                   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -35,7 +36,7 @@
                         <%= f.password_field :email, autocomplete: "password" %>
                       </div>
                       <div class="actions">
-                        <%= f.submit "Log in" %>
+                        <%= f.submit "Log in", class: "btn btn-primary" %>
                       </div>
                     <% end %>
                   </div>
@@ -45,11 +46,12 @@
             </div>
           </div>
         </div>
+<!-- modal se conecter -->
         <div class="container-modal">
           <div id="id02" class="modal">
             <div class="row-modal">
               <div class="col-md-9">
-                <div class="modal-content-log">
+                <div class="modal-content-log ">
                 <div class="imgcontainer">
                   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                 </div>
@@ -78,7 +80,7 @@
                     </div>
 
                     <div class="actions">
-                      <%= f.submit "Sign up" %>
+                      <%= f.submit "Sign up",class: "btn btn-primary" %>
                     </div>
                   <% end %>
                   </div>
