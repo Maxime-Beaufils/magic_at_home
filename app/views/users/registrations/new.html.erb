@@ -1,7 +1,14 @@
-<body>
+<%= stylesheet_link_tag params[:controller] %>
+<div class="wrapper  ">
   <div class="container">
-    <%= stylesheet_link_tag params[:controller] %>
-          <h2>Sign up users view</h2>
+    <div class="content ">
+      <div class="col-lg-7 ">
+        <div class="card card-chart">
+          <div class="card-header ">
+            <h3 class="card-title float-left font-weight-bold">S'inscrire</h3>
+          </div>
+          <div class="card-body ">
+
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
@@ -25,13 +32,10 @@
             </div><br>
 
             <div class="actions">
-              <%= f.submit "Sign up" %>
+              <%= f.submit "S'inscrire", class: 'btn btn-primary btn-sm'%>
             </div>
           <% end %>
 
           <div class="shared">
             <%= render "users/shared/links" %>
           </div>
-
-  </div>
-</body>
