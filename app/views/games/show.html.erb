@@ -40,22 +40,22 @@
             <div class="card-header">
               <h4 class="card-title float-left"> La partie </h4>
             </div>
-                <div class="card-body">
-                  <h2>Format joué: <%=@game.game_format%></h2><br>
-                  <h2><i class="fas fa-calendar-alt"></i><%=  @game.date.strftime(' %d-%m-%Y')%></h2> <br>
-                  <h2><i class="fas fa-map-pin"></i> <%=@game.place%></h2> <br>
-                  <h3><%=@game.description%></h3>
-                  <% if @game.user_creator_id == current_user.id %>
-                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
-                    <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Supprimer la partie</a>
-                  <% else %>
-                      <% if @game.user_opponent_id == nil %>
-                          <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
-                      <% elsif @game.user_opponent_id == current_user.id%>
-                          <%= button_to "Quitter la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
-                      <% end %>
+            <div class="card-body">
+              <h2>Format joué: <%=@game.game_format%></h2><br>
+              <h2><i class="fas fa-calendar-alt"></i><%=  @game.date.strftime(' %d-%m-%Y')%></h2> <br>
+              <h2><i class="fas fa-map-pin"></i> <%=@game.place%></h2> <br>
+              <h3><%=@game.description%></h3>
+              <% if @game.user_creator_id == current_user.id %>
+                <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Modifier la partie</a>
+                <a href="<%= edit_game_path(@id) %>" class="btn btn-primary">Supprimer la partie</a>
+              <% else %>
+                  <% if @game.user_opponent_id == nil %>
+                      <%= button_to "Rejoindre la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
+                  <% elsif @game.user_opponent_id == current_user.id%>
+                      <%= button_to "Quitter la partie", game_path(@game), :method => :post, class: "btn btn-primary" %>
                   <% end %>
-                </div>
+              <% end %>
+            </div>
           </div>
         </div>
 
@@ -105,6 +105,54 @@
               <% end %>
               </div>
             </div>
+        </div>
+
+      <!-- comments -->
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title float-left"> Commentaires : </h4>
+            </div>
+            <div class="card-body">
+              <table>
+                <thead>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>auteur</td> <td>Contenu</td> <td>Lien vers le comm'</td>
+                  </tr>
+                  <% @game.game_comments.each do |comment|%>
+                  <tr>
+                    <td><%= comment.username %></td>
+                    <td><%= comment.body%></td>
+                    <td><%= link_to "Editer le com", edit_game_game_comment_path(@game) %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= link_to "Retour à l'Accueil", '/' %>
+
+
+
+              <h2>Ajouter un commentaire:</h2>
+              <%= form_with(model: [ @game, @game.game_comments.build ], local: true) do |form| %>
+                <p>
+                  <% form.text_field :username, value: current_user.profile.username %>
+                </p>
+                <p>
+                  <%= form.label :content%><br>
+                  <%= form.text_area :body %>
+                </p>
+                <p>
+                  <%= form.submit %>
+                </p>
+              <% end %>
+
+              <%= link_to 'Clique pour détruire', game_path(@game), method: :delete, class:"btn btn-danger",
+              data: { confirm: "ARE YOU SURE ????"} %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
