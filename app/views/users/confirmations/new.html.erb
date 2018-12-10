@@ -1,24 +1,28 @@
 <%= stylesheet_link_tag params[:controller] %>
-<body>
+<div class="wrapper  ">
   <div class="container">
-    <h2>Resend confirmation instructions</h2>
+    <div class="content ">
+      <div class="col-lg-7 ">
+        <div class="card card-chart">
+          <div class="card-header ">
+            <h3 class="card-title float-left font-weight-bold">Instructions de confirmation</h3>
+          </div>
+          <div class="card-body ">
+
 
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email, class:'text-white' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-      </div>
+      </div><br>
 
       <div class="actions">
-        <%= f.submit "Resend confirmation instructions" %>
+        <%= f.submit "Resend confirmation instructions", class: 'btn btn-primary btn-sm' %>
       </div>
     <% end %>
 
     <div class="shared">
         <%= render "users/shared/links" %>
     </div>
-  </div>
-
-</body>
