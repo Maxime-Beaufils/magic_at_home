@@ -22,7 +22,6 @@
 //= require black-dashboard
 //= require moment
 //= require fullcalendar
-//= require fullcalendar/locale-all
 //= require_tree .
 
 $('#calendar').fullCalendar({});
