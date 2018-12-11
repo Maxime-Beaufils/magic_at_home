@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   root 'landing_pages#index'
   get 'landing_pages/index'
 
-  resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+    resources :game_comments
+  end
+  post 'games/:id', to: 'games#join_game'
 
   resources :profile, only: [:index, :show, :edit, :update]
+  get '/player', to: 'profile#index'
   get '/profil', to: 'profile#edit'
   patch '/profil', to: 'profile#update'
   

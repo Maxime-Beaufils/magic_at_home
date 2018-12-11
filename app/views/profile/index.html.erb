@@ -1,0 +1,144 @@
+<%= stylesheet_link_tag params[:controller] %>
+
+<div class="wrapper ">
+  <%= render 'navbar', :layout => 'navbar' %>
+  <%= render 'alert', :layout => 'alert' %>
+  <div class="content">
+    <div class="col-12">
+        <% if params[:search].present?%>
+        <div class="card ">
+          <div class="card-header ">
+            <div class="col-12">
+              <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Recherche de joueur</h3>
+              <nav class="nav nav-tabs" style="border-bottom:0px">
+              <a class="btn btn-sm btn-primary btn-simple" href="#p1" data-toggle="tab">Près de chez vous</a>
+              <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+              <a class="btn btn-sm btn-primary btn-simple active" href="#p3" data-toggle="tab">Près de <%= params[:search] %></a>
+              </nav>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane fade" id="p1">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Pseudo</th>
+                      <th>Ville</th>
+                      <th>Format préféré :</th>
+                      <th>Couleur de prédilection :</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@player.each do |player| %>
+                      <tr>
+                        <td><%= player.username %></td>
+                        <td><%= player.city %></td>
+                        <td><%= player.favorite_format %></td>
+                        <td><%= player.favorite_color %></td>
+                        <td><%= player.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
+                        <td><a href="/profile/<%=player.id %>" class="btn btn-primary">profile</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @player_city, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade " id="p2">
+                <%= form_tag ('/profile'), :method => :get do%>
+                  <p>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+                  </p>
+                <% end%>
+              </div>
+              <div class="tab-pane fade show active" id="p3">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Pseudo</th>
+                      <th>Ville</th>
+                      <th>Format préféré :</th>
+                      <th>Couleur de prédilection :</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@player_city.each do |player| %>
+                      <tr>
+                        <td><%= player.username %></td>
+                        <td><%= player.city %></td>
+                        <td><%= player.favorite_format %></td>
+                        <td><%= player.favorite_color %></td>
+                        <td><%= player.distance_to(Geocoder.search(params[:search]).first.coordinates).round(2)%> kms </td>
+                        <td><a href="/profile/<%=player.id %>" class="btn btn-primary">profile</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @player, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else%>
+        <div class="card ">
+          <div class="card-header ">
+            <div class="col-12">
+              <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Recherche de joueur</h3>
+              <nav class="nav nav-tabs" style="border-bottom:0px">
+              <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Près de chez vous</a>
+              <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+              </nav>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="p1">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Pseudo</th>
+                      <th>Ville</th>
+                      <th>Format préféré :</th>
+                      <th>Couleur de prédilection :</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@player.each do |player| %>
+                      <tr>
+                        <td><%= player.username %></td>
+                        <td><%= player.city %></td>
+                        <td><%= player.favorite_format %></td>
+                        <td><%= player.favorite_color %></td>
+                        <td><%= player.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
+                        <td><a href="/profile/<%=player.id %>" class="btn btn-primary">profile</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @player, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="p2">
+              <%= form_tag ('/profile'), :method => :get do%>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+                </p>
+              <% end%>
+              </div>
+            </div>
+          </div>
+        </div><!-- end search player -->
+      <% end%>
+    </div>
+  </div>
+</div>

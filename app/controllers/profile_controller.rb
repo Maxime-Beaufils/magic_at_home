@@ -2,7 +2,15 @@ class ProfileController < ApplicationController
   before_action :authenticate_user!
 
   def index
-   
+    @profiles = Profile.all
+    @cup = current_user.profile
+    if params[:search].present?
+      @player_city = Profile.near(params[:search], 150).page(params[:page]).per(10)
+      @player = Profile.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
+    else
+    #nerbys(n) n=distance en km
+    @player = Profile.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
+    end
   end
 
   def edit

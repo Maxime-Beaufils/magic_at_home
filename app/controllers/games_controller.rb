@@ -43,18 +43,31 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     @game.update(game_params)
-    redirect_to game_path(@game.id)
+    redirect_to game_path(@game.id), :notice => 'Partie modifiée avec succés.'
   end
 
+  def join_game
+    @game = Game.find(params[:id])
+    if @game.user_opponent_id == current_user.id
+        @game.update(user_opponent_id: nil)
+        redirect_to game_path(@game.id), :notice => 'Vous avez quitté la partie.'
+    else
+        @game.update(user_opponent_id: current_user.id)
+        redirect_to game_path(@game.id), :notice => 'Vous avez rejoins la partie.'
+    end
+  end
 
   def delete
   end
 
   def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to '/games'
   end
 private
   def game_params
-    params.require(:game).permit(:date, :place, :game_format, :description)
+    params.require(:game).permit(:date, :place, :game_format, :description, :user_opponent_id)
   end
   
 end

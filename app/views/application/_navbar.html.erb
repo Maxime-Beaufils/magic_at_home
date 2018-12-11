@@ -13,9 +13,9 @@
         </div>
         <ul class="nav">
           <li>
-            <a href="/dashboard">
+            <a href="/player">
               <i class="tim-icons icon-chart-pie-36"></i>
-              <p>Dashboard</p>
+              <p>Recherche de joueurs</p>
             </a>
           </li>
           <li>
@@ -54,6 +54,38 @@
               <p>Typography</p>
             </a>
           </li>
+           <li>
+            <a href="https://magic.wizards.com/fr" target="_blank">
+              <i class="fas fa-hat-wizard"></i>
+              <p>MTG Official</p>
+            </a>
+          </li>
+          <li>
+            <a href="http://www.magiccorporation.com/" target="_blank">
+              <i class="fas fa-magic"></i>
+              <p>Magic Corporation</p>
+            </a>
+          </li>
+            <li>
+            <a href="https://mtgtop8.com/" target="_blank">
+              <i class="far fa-star"></i>
+              <p>MTG top8</p>
+            </a>
+          </li>
+          <p></p>
+          <li>
+            <a href="https://www.cardmarket.com/fr/Magic" target="_blank">
+              <i class="fas fa-shopping-cart"></i>
+              <p>Cradmarket</p>
+            </a>
+          </li>
+          <p></p>
+           <li>
+            <a href="https://magic.wizards.com/fr/content/magic-gathering-arena" target="_blank">
+              <i class="fas fa-hanukiah"></i>
+              <p>Magic Arena</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -70,7 +102,7 @@
               </button>
             </div>
             <a class="navbar-brand" href="#">Profil du joueur <% if user_signed_in? %>
-                      <%= current_user.email %>
+                      <br><%= current_user.profile.username %>
                     <% end %></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
