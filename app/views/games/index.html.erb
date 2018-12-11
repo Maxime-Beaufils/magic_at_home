@@ -51,7 +51,11 @@
                   <%@games.each do |game| %>
                     <tr>
                       <td><% if game.user_creator_id? %>
+<<<<<<< HEAD
                             <%= User.find(game.user_creator_id).profile.username %>
+=======
+                            <%= Profile.find(game.user_creator_id).username %>
+>>>>>>> front_users
                           <% end %>
                       </td>
                       <td><%= game.place %></td>
@@ -97,7 +101,11 @@
                   <%@games_city.each do |game| %>
                     <tr>
                       <td><% if game.user_creator_id? %>
+<<<<<<< HEAD
                             <%= User.find(game.user_creator_id).profile.username %>
+=======
+                            <%= Profile.find(game.user_creator_id).username %>
+>>>>>>> front_users
                           <% end %>
                       </td>
                       <td><%= game.place %></td>
@@ -152,7 +160,11 @@
                     <tr>
                       <td><% if game.user_creator_id? %>
                             <a href="/profile/<%= game.user_creator_id %>"><img class="photo-game" src="/assets/anime6.png"></a> 
+<<<<<<< HEAD
                             <%= User.find(game.user_creator_id).profile.username %>
+=======
+                            <%= Profile.find(game.user_creator_id).username %>
+>>>>>>> front_users
                           <% end %>
                       </td>
                       <td><%= game.place %></td>

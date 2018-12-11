@@ -1,29 +1,25 @@
 @import 'dashboards';
-
+body{
+  background-image: url('/assets/bg2.jpg')!important;
+}
 h2{
-  margin-top: 50px;
   text-align: center;
-  color: red;
 }
 .field{
-text-align: center;
-color:yellow;
+  text-align: center;
 }
 .actions{
-text-align: center;
-}
-.blabla{
-  color: aqua;
-}
-
-.container{
-  border-radius: 20px;
-  margin-top: 100px;
-  padding:  3px 10px 10px 10px;
-  width: 40%;
-  height: 400px;
-  background-color: aqua;
-}
-.k{
   text-align: center;
+}
+.container{
+  border-radius: 30px;
+  margin-top: 150px;
+  margin-left: 450px;
+  padding: 3px 10px 10px 10px;
+}
+.shared{
+  text-align: center;
+}
+.card-body{
+  background: linear-gradient(165deg, rgba(0,101,168,0.2) 0%, rgba(0,36,61,0.2) 0%);
 }

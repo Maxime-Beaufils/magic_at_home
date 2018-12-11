@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   root 'landing_pages#index'
   get 'landing_pages/index'
 
+<<<<<<< HEAD
   resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :game_comments
   end
+=======
+  resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+>>>>>>> front_users
   post 'games/:id', to: 'games#join_game'
 
   resources :profile, only: [:index, :show, :edit, :update]

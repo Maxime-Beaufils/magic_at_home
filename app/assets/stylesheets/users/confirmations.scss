@@ -1,1 +1,22 @@
 @import 'dashboards';
+body{
+  background-image: url('/assets/bg2.jpg')!important;
+}
+h2{
+  text-align: center;
+}
+.field{
+  text-align: center;
+}
+.actions{
+  text-align: center;
+}
+.container{
+  border-radius: 30px;
+  margin-top: 150px;
+  margin-left: 350px;
+  padding: 3px 10px 10px 10px;
+}
+.shared{
+  text-align: center;
+}
