@@ -5,11 +5,11 @@ class ProfileController < ApplicationController
     @profiles = Profile.all
     @cup = current_user.profile
     if params[:search].present?
-      @games_city = Game.near(params[:search], 150).page(params[:page]).per(10)
-      @games = Game.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
+      @player_city = Profile.near(params[:search], 150).page(params[:page]).per(10)
+      @player = Profile.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
     else
     #nerbys(n) n=distance en km
-    @games = Game.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
+    @player = Profile.all.near([@cup.latitude,@cup.longitude], 150).page(params[:page]).per(10)
     end
   end
 
