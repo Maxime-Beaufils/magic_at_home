@@ -526,9 +526,6 @@ body {
   padding-left: 300px;
 
 }
-.container-modal{
-
-}
 
 .modal-content-log {
   background-image: url('../assets/bg2.jpg') !important;
@@ -539,18 +536,23 @@ body {
 
 }
 .field {
-  width: 200px;
+  width: 180px;
   height: 100px;
-  text-align: center;
+
   margin:0 auto;
   border-radius: 10px;
   padding-bottom: 40px;
-  font-family: Pacifico;
-  font-size: 20;
+  font-family: Georgia;
+  font-size: 10;
 }
+.field_email{
+  width: 180px;
+  height: 100px;
+}
+
 .btn{
-font-family: Pacifico;
-font-size: 20;
+font-family: Georgia;
+font-size: 30;
 margin-bottom: 20px;
 margin-top: 10px;
 }
