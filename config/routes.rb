@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'games/:id', to: 'games#join_game'
 
   resources :profile, only: [:index, :show, :edit, :update]
+  get '/player', to: 'profile#index'
   get '/profil', to: 'profile#edit'
   patch '/profil', to: 'profile#update'
   

@@ -1,0 +1,176 @@
+<%= stylesheet_link_tag params[:controller] %>
+
+<div class="wrapper ">
+  <%= render 'navbar', :layout => 'navbar' %>
+  <%= render 'alert', :layout => 'alert' %>
+  <div class="content">
+    <div class="col-12">
+        <% if params[:search].present?%>
+        <div class="card ">
+          <div class="card-header ">
+            <div class="col-12">
+              <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Rechercher de joueur</h3>
+              <nav class="nav nav-tabs" style="border-bottom:0px">
+              <a class="btn btn-sm btn-primary btn-simple" href="#p1" data-toggle="tab">Près de chez vous</a>
+              <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+              <a class="btn btn-sm btn-primary btn-simple active" href="#p3" data-toggle="tab">Près de <%= params[:search] %></a>
+              </nav>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane fade" id="p1">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Créateur</th>
+                      <th>Lieu</th>
+                      <th>Date</th>
+                      <th>Format joué</th>
+                      <th>Adversaire</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@games.each do |game| %>
+                      <tr>
+                        <td><% if game.user_creator_id? %>
+                              <%= User.find(game.user_creator_id).profile.username %>
+                            <% end %>
+                        </td>
+                        <td><%= game.place %></td>
+                        <td><%= game.date.strftime('%d-%m-%Y') %></td>
+                        <td><%= game.game_format %></td>
+                        <td><% if game.user_opponent_id? %>
+                              <%= User.find(game.user_opponent_id).profile.username %>
+                            <% else %>
+                              -
+                            <% end %>
+                        </td>
+                        <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
+                        <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade " id="p2">
+                <%= form_tag games_path, :method => :get do%>
+                  <p>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+                  </p>
+                <% end%>
+              </div>
+              <div class="tab-pane fade show active" id="p3">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Créateur</th>
+                      <th>Lieu</th>
+                      <th>Date</th>
+                      <th>Format joué</th>
+                      <th>Adversaire</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@games_city.each do |game| %>
+                      <tr>
+                        <td><% if game.user_creator_id? %>
+                              <%= User.find(game.user_creator_id).profile.username %>
+                            <% end %>
+                        </td>
+                        <td><%= game.place %></td>
+                        <td><%= game.date.strftime('%d-%m-%Y') %></td>
+                        <td><%= game.game_format %></td>
+                        <td><% if game.user_opponent_id? %>
+                              <%= User.find(game.user_opponent_id).profile.username %>
+                            <% else %>
+                              -
+                            <% end %>
+                        </td>
+                        <td><%= game.distance_to(Geocoder.search(params[:search]).first.coordinates).round(2)%> kms </td>
+                        <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else%>
+        <div class="card ">
+          <div class="card-header ">
+            <div class="col-12">
+              <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Rechercher une partie</h3>
+              <nav class="nav nav-tabs" style="border-bottom:0px">
+              <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Près de chez vous</a>
+              <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Par ville</a>
+              </nav>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="p1">
+                <div class="table-responsive">
+                  <table class="table tablesorter" >
+                    <thead class=" text-primary">
+                      <th>Créateur</th>
+                      <th>Lieu</th>
+                      <th>Date</th>
+                      <th>Format joué</th>
+                      <th>Adversaire</th>
+                      <th>Distance</th>
+                    </thead>
+                    <tbody>
+                    <%@games.each do |game| %>
+                      <tr>
+                        <td><% if game.user_creator_id? %>
+                              <a href="/profile/<%= game.user_creator_id %>"><img class="photo-game" src="/assets/anime6.png"></a> 
+                              <%= User.find(game.user_creator_id).profile.username %>
+                            <% end %>
+                        </td>
+                        <td><%= game.place %></td>
+                        <td><%= game.date.strftime('%d-%m-%Y') %></td>
+                        <td><%= game.game_format %></td>
+                        <td><% if game.user_opponent_id? %>
+                              <img class="photo-game" src="/assets/Jacquouille.jpg"></a>
+                              <%= User.find(game.user_opponent_id).profile.username %>
+                            <% else %>
+                              <img class="photo-game" src="/assets/Jacquouille.jpg"></a> -
+                            <% end %>
+                        </td>
+                        <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
+                        <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                      </tr>
+                    <%end%>
+                    </tbody>
+                  </table>
+                  <div class="container pagination justify-content-center">
+                    <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="p2">
+              <%= form_tag games_path, :method => :get do%>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Rechercher", :place => nil, class: "btn btn-primary" %>
+                </p>
+              <% end%>
+              </div>
+            </div>
+          </div>
+        </div><!-- end search game -->
+      <% end%>
+    </div>
+  </div>
+</div>
