@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'events/show'
   root 'landing_pages#index'
   get 'landing_pages/index'
 
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   
   get '/map', to: 'dashboards#map'
 
+  resources :event, only: [:index, :show, :edit, :update]
+  get '/events', to: 'events#index'
 
   devise_for :users, 
                     controllers: {

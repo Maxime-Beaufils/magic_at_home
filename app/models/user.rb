@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :events, :through => :EventUsers  # Edit :needs to be plural same as the has_many relationship   
+
+
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

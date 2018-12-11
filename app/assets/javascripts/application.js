@@ -20,7 +20,12 @@
 //= require chartjs.min
 //= require bootstrap-notify
 //= require black-dashboard
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree .
+
+$('#calendar').fullCalendar({});
 
 function functionReveal() {
   var x = document.getElementById("card-hide");
