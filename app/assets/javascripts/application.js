@@ -13,13 +13,22 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery.min
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
 //= require bootstrap-notify
 //= require black-dashboard
-//= require jquery.min
 //= require moment
 //= require fullcalendar
 //= require_tree .
 
+
+function functionReveal() {
+  var x = document.getElementById("card-hide");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
