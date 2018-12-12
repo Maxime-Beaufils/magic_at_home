@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-
 //= require jquery.min
 //= require popper.min
 //= require bootstrap.min
@@ -20,63 +19,5 @@
 //= require chartjs.min
 //= require bootstrap-notify
 //= require black-dashboard
-//= require moment
-//= require fullcalendar
-//= require fullcalendar/locale-all
 //= require_tree .
 
-$('#calendar').fullCalendar({});
-
-function functionReveal() {
-    var initialize_calendar;
-initialize_calendar = function() {
-  $('.calendar').each(function(){
-    var calendar = $(this);
-    calendar.fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      selectable: true,
-      selectHelper: true,
-      editable: true,
-      eventLimit: true,
-      events: '/events.json',
-
-      select: function(start, end) {
-        $.getScript('/events/new', function() {});
-
-        calendar.fullCalendar('unselect');
-      },
-
-      eventDrop: function(event, delta, revertFunc) {
-        event_data = { 
-          event: {
-            id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
-          }
-        };
-        $.ajax({
-            url: event.update_url,
-            data: event_data,
-            type: 'PATCH'
-        });
-      },
-      
-      eventClick: function(event, jsEvent, view) {
-        $.getScript(event.edit_url, function() {});
-      }
-    });
-  })
-};
-$(document).on('turbolinks:load', initialize_calendar);
-
-  var x = document.getElementById("card-hide");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
