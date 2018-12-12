@@ -25,13 +25,16 @@ ActiveRecord::Schema.define(version: 2018_12_11_135304) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start"
+    t.datetime "end"
     t.string "place"
-    t.date "date"
+    t.string "color"
     t.text "description"
-    t.bigint "user_creator_id"
+    t.bigint "user_event_creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_creator_id"], name: "index_events_on_user_creator_id"
+    t.index ["user_event_creator_id"], name: "index_events_on_user_event_creator_id"
   end
 
   create_table "game_comments", force: :cascade do |t|

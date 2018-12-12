@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'events/show'
   root 'landing_pages#index'
   get 'landing_pages/index'
+  get '/yolo', to: 'landing_pages#yolo'
 
   resources :games, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :game_comments
@@ -16,8 +17,7 @@ Rails.application.routes.draw do
   
   get '/map', to: 'dashboards#map'
 
-  resources :event, only: [:index, :show, :edit, :update]
-  get '/events', to: 'events#index'
+  resources :events
 
   devise_for :users, 
                     controllers: {

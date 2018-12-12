@@ -12,12 +12,14 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require jquery.min
+//= require turbolinks
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
-//= require chartjs.min
 //= require bootstrap-notify
 //= require black-dashboard
+//= require jquery.min
+//= require moment
+//= require fullcalendar
 //= require_tree .
 
