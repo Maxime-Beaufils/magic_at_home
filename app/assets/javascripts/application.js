@@ -21,10 +21,27 @@
 //= require bootstrap-notify
 //= require black-dashboard
 //= require moment
+//= require jquery_ujs
 //= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree .
 
-$('#calendar').fullCalendar({});
+function eventCalendar() {
+    return $('#calendar').fullCalendar({
+        
+    });
+  };
+  
+function clearCalendar() {
+    $('#calendar').fullCalendar('delete'); 
+    $('#calendar').html('');
+};
+
+jq321(document).on('turbolinks:load', function(){
+    eventCalendar();  
+  });
+  
+$(document).on('turbolinks:before-cache', clearCalendar);
 
 function functionReveal() {
   var x = document.getElementById("card-hide");
