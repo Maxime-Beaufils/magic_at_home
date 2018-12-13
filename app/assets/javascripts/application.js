@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery.min
+//= require turbolinks
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
@@ -21,6 +21,7 @@
 //= require black-dashboard
 //= require moment
 //= require fullcalendar
+//= require daterangepicker
 //= require_tree .
 
 
