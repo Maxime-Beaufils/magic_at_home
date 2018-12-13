@@ -2,7 +2,12 @@
 <div class="wrapper ">
   <%= render 'navbar', :layout => 'navbar' %>
   <div class="content">
-    <div class="calendar"></div>
-    <div id="remote_container"></div>
+    <div class="row">
+      <div class="col-sm-7 fullcalendar">
+        <div class="calendar"></div>
+        <div id="remote_container"></div>
+      </div>
+      <%= render 'show'%>
+    </div>
   </div>
 </div>

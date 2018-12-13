@@ -4,3 +4,29 @@
 
 @import "fullcalendar";
 @import 'dashboards';
+@import "bootstrap-datepicker";
+
+.content {
+  color: #040327c4 !IMPORTANT;
+}
+.modal-content h4 {
+  color: #040327c4 !IMPORTANT;
+}
+.form-control {
+  color: #040327c4 !IMPORTANT;
+}
+.fullcalendar {
+  background-color: white;
+  border-radius: 5px;
+}
+.fa-calendar-check {
+  color: white;
+  font-size: 45px;
+  margin: 30px;
+}
+.cardfooter{
+  background-image: url('/assets/head-top.jpg');
+  background-size: cover;
+  border-radius: 0 0 5px 5px;
+  padding: 50px;
+}

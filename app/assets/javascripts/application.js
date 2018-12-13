@@ -22,6 +22,8 @@
 //= require moment
 //= require fullcalendar
 //= require daterangepicker
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 //= require_tree .
 
 

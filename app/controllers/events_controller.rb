@@ -4,9 +4,11 @@ class EventsController < ApplicationController
   def index
     @events = Event.where(start: params[:start]..params[:end])
     @event = Event.new
+    @last_event = Event.last
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -17,8 +19,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.save
+    
+    @event = Event.create('title' => params.require(:event)[:title],
+                          'date_range' => params.require(:event)[:date],
+                          'description' => params.require(:event)[:description],
+                          'start' => params.require(:event)[:start],
+                          'end' => params.require(:event)[:end],
+                          'place' => params.require(:event)[:place],
+                          'user_event_creator_id' => current_user.id)
   end
 
   def update
