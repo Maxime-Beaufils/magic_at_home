@@ -257,8 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   
-  config.omniauth :facebook, Rails.application.credentials[:fb_KEY], Rails.application.credentials[:fb_secret], scope: 'email', info_fields: 'email,name'
-  callback_url: "https://magic-at-home-dev.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, Rails.application.credentials[:facebook_app_id], Rails.application.credentials[:facebook_app_secret], scope: 'email', info_fields: 'email,name',  callback_url: "https://magic-at-home-dev.herokuapp.com/users/auth/facebook/callback"
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -290,3 +289,4 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
 end
+
