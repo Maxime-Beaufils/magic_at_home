@@ -1,14 +1,17 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
+  params[:auth] = request.env["omniauth.auth"]
+  params[:params] = request.env["omniauth.params"]
   def facebook
-    puts "1"
+    
     user = User.from_omniauth(request.env["omniauth.auth"], request.env["omniauth.params"])
-    puts "2"
+    
     if user.persisted?
+    #create profile when user create
+    Profile.create!(user_id: resource.id)
       flash.notice = "Signed in!"
       sign_in_and_redirect(user) and return
     else
-    puts "3"
+   
       user.save
       flash.notice = "Created account!"
       sign_in_and_redirect(user) and return
@@ -16,3 +19,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
  end
+
