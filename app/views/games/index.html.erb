@@ -58,7 +58,8 @@
                       <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
                       <td><% if game.user_opponent_id? %>
-                            <%= User.find(game.user_opponent_id).profile.username %>
+                            <a href="/profile/<%= game.user_opponent_id %>">
+                            <%= User.find(game.user_opponent_id).profile.username %></a>
                           <% else %>
                             -
                           <% end %>
@@ -104,7 +105,8 @@
                       <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
                       <td><% if game.user_opponent_id? %>
-                            <%= User.find(game.user_opponent_id).profile.username %>
+                            <a href="/profile/<%= game.user_opponent_id %>">
+                            <%= User.find(game.user_opponent_id).profile.username %></a>
                           <% else %>
                             -
                           <% end %>
@@ -151,15 +153,16 @@
                   <%@games.each do |game| %>
                     <tr>
                       <td><% if game.user_creator_id? %>
-                            <a href="/profile/<%= game.user_creator_id %>"><img class="photo-game" src="/assets/anime6.png"></a> 
-                            <%= User.find(game.user_creator_id).profile.username %>
+                            <a href="/profile/<%= game.user_creator_id %>">
+                            <%= User.find(game.user_creator_id).profile.username %></a> 
                           <% end %>
                       </td>
                       <td><%= game.place %></td>
                       <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
                       <td><% if game.user_opponent_id? %>
-                            <%= User.find(game.user_opponent_id).profile.username %>
+                            <a href="/profile/<%= game.user_opponent_id %>">
+                            <%= User.find(game.user_opponent_id).profile.username %></a>
                           <% else %>
                            -
                           <% end %>
