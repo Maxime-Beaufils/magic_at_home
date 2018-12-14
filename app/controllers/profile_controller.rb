@@ -32,6 +32,8 @@ class ProfileController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @games = Game.all.where("date >= ?", Time.current).page(params[:page]).per(10)
   end
 
 private

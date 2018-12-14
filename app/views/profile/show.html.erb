@@ -4,3 +4,78 @@
   <%= render 'navbar', :layout => 'navbar' %>
   <%= render 'alert', :layout => 'alert' %>
   <div class="content">
+    <div class="col-md-8">
+        <div class="card  card-user">
+          <div class="card-body ">
+              <div class="author">
+               <div class="block block-one"></div>
+               <div class="block block-two"></div>
+               <div class="block block-three"></div>
+               <div class="block block-four"></div>
+               <a href="#">
+                 <img class="avatar" src="/assets/Jacquouille.jpg" alt="...">
+                 <h3 class="title"><%= @user.profile.username %></h3>
+                 <i class="fas fa-comments"></i>
+               </a>
+                 <h4 class="card-description text-center">
+                   de <%= @user.profile.city %><br>
+                 </h4>
+                 <h4 class="card-description text-center">
+                   Format préféré : <%= @user.profile.favorite_format %><br>
+                   Couleur de prédilection : <%= @user.profile.favorite_color %><br>
+                 </h4>
+                 <h4 class="card-description text-center">
+                   <%= @user.profile.bio %><br>
+                 </h4>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+       <div class="col-md-8">
+         <div class="card card-chart">
+           <div class="card-header ">
+             <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Ses parties à venir :</h3>
+           </div>
+           <div class="card-body ">
+             <table class="table tablesorter" >
+               <thead class=" text-primary">
+                 <th>Créateur</th>
+                 <th>Lieu</th>
+                 <th>Date</th>
+                 <th>Format joué</th>
+                 <th>Adversaire</th>
+               </thead>
+               <tbody>
+                   <%@games.each do |game| %>
+                   <tr>
+                   <% if game.user_creator_id == @user.id || game.user_opponent_id == @user.id %>
+                     <td>
+                           <a href="/profile/<%= game.user_creator_id %>">
+                           <%= User.find(game.user_creator_id).profile.username %></a> 
+                     </td>
+                     <td><%= game.place %></td>
+                     <td><%= game.date.strftime('%d-%m-%Y') %></td>
+                     <td><%= game.game_format %></td>
+                     <td><% if game.user_opponent_id? %>
+                           <a href="/profile/<%= game.user_opponent_id %>">
+                           <%= User.find(game.user_opponent_id).profile.username %></a>
+                         <% else %>
+                         -
+                         <% end %>
+                     </td>
+                     <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                   </tr>
+                   <% end %>
+                 <%end%>
+               </tbody>
+             </table>
+             <div class="container pagination justify-content-center">
+                  <%= paginate @games, theme: 'twitter-bootstrap-4'%>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+</div>
