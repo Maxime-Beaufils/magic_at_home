@@ -5,11 +5,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_one :profile
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
 
   def self.new_with_session(params, session)
     super.tap do |user|
