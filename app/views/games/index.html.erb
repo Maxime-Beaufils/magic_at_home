@@ -159,10 +159,9 @@
                       <td><%= game.date.strftime('%d-%m-%Y') %></td>
                       <td><%= game.game_format %></td>
                       <td><% if game.user_opponent_id? %>
-                            <img class="photo-game" src="/assets/Jacquouille.jpg"></a>
                             <%= User.find(game.user_opponent_id).profile.username %>
                           <% else %>
-                            <img class="photo-game" src="/assets/Jacquouille.jpg"></a> -
+                           -
                           <% end %>
                       </td>
                       <td><%= game.distance_to([@cup.latitude,@cup.longitude]).round(2)%> kms </td>
