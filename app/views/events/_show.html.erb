@@ -1,26 +1,30 @@
 <div class="col-sm-5">
   <div class="card ">
     <div class="card-header ">
-        <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Evenement :</h3>
+        <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Evenements à venir :</h3>
         
     </div>
     <div class="card-body text-center">
       <nav class="nav nav-tabs" style="border-bottom:0px">
-        <a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Rejoindre l'événement</a>
-        <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Quitter l'évenement</a>
+        <!--<a class="btn btn-sm btn-primary btn-simple active" href="#p1" data-toggle="tab">Rejoindre l'événement</a>
+        <a class="btn btn-sm btn-primary btn-simple" href="#p2" data-toggle="tab">Quitter l'évenement</a>-->
       </nav>
       <div id="p1">
+      <% @all_event.each do |event| %>
         <i class="far fa-calendar-check"></i>
-        <h3 class="title"><%= @last_event.title %></h3>
-        <h5>Créé par <%= User.find(@last_event.user_event_creator_id).profile.username %></h5><br>
-        <h4>Lieux : <%= @last_event.place %></h4>
-        <h4>Début :<%= @last_event.start.strftime(' %d-%m-%Y') %></h4>
-        <h4>Fin: <%= @last_event.end.strftime(' %d-%m-%Y') %></h4>
-        <p>Déscription:<br> <%= @last_event.description %></p>
-        
+        <h3 class="title"><%= event.title %></h3>
+        <h5>Créé par <%= User.find(event.user_event_creator_id).profile.username %></h5><br>
+        <h4>Lieux : <%= event.place %></h4>
+        <h4>Début :<%= event.start.strftime(' %d-%m-%Y') %></h4>
+        <h4>Fin: <%= event.end.strftime(' %d-%m-%Y') %></h4>
+        <p>Déscription:<br> <%= event.description %></p>
+        <% end %>
       </div>
     </div>
     <div class="cardfooter">
+      <div class="container pagination justify-content-center">
+                  <%= paginate @all_event, theme: 'twitter-bootstrap-4'%>
+      </div>
       </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.where(start: params[:start]..params[:end])
     @event = Event.new
-    @last_event = Event.last
+    @all_event = Event.where("start >= ?", Time.current).order('start ASC').page(params[:page]).per(1)
   end
 
   def show
