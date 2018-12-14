@@ -115,27 +115,44 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col">
                 <div class="card card-chart">
                   <div class="card-header ">
-                    <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Vos parties :</h3>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Vos parties à venir :</h3>
                   </div>
                   <div class="card-body ">
-                    <div class="chart-area">
-                      <canvas id="chartLineGreen"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="card card-chart">
-                  <div class="card-header ">
-                    <h3 class="card-title"><i class="tim-icons icon-send text-success "></i> Vos événements :</h3>
-                  </div>
-                  <div class="card-body ">
-                    <div class="chart-area">
-                      <canvas id="chartLineGreen"></canvas>
-                    </div>
+                    <table class="table tablesorter" >
+                      <thead class=" text-primary">
+                        <th>Créateur</th>
+                        <th>Lieu</th>
+                        <th>Date</th>
+                        <th>Format joué</th>
+                        <th>Adversaire</th>
+                      </thead>
+                      <tbody>
+                          <%@games.each do |game| %>
+                          <tr>
+                          <% if game.user_creator_id == current_user.id || game.user_opponent_id == current_user.id %>
+                            <td>
+                                  <a href="/profile/<%= game.user_creator_id %>">
+                                  <%= User.find(game.user_creator_id).profile.username %></a> 
+                            </td>
+                            <td><%= game.place %></td>
+                            <td><%= game.date.strftime('%d-%m-%Y') %></td>
+                            <td><%= game.game_format %></td>
+                            <td><% if game.user_opponent_id? %>
+                                  <a href="/profile/<%= game.user_opponent_id %>">
+                                  <%= User.find(game.user_opponent_id).profile.username %></a>
+                                <% else %>
+                                -
+                                <% end %>
+                            </td>
+                            <td><a href="<%= game_path(game.id) %>" class="btn btn-primary">info</a></td>
+                          </tr>
+                          <% end %>
+                        <%end%>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -151,30 +168,17 @@
                     <div class="block block-three"></div>
                     <div class="block block-four"></div>
                     <a href="#">
-                      <img class="avatar" src="/assets/anime6.png" alt="...">
-                      <h5 class="title">godefroy de montmirail</h5>
+                      <img class="avatar" src="/assets/Jacquouille.jpg" alt="...">
+                      <h5 class="title"><%= current_user.profile.username %></h5>
                     </a>
                     <p class="description">
-                      Ceo/Co-Founder
+                      <%= current_user.profile.favorite_color %> / <%= current_user.profile.favorite_format %>
                     </p>
                   </div>
                 </p>
                 <p class="card-description">
-                  Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  <%= current_user.profile.bio %>
                 </p>
-              </div>
-              <div class="card-footer ">
-                <div class="button-container">
-                  <button href="#" class="btn btn-icon btn-round btn-facebook">
-                    <i class="fab fa-facebook"></i>
-                  </button>
-                  <button href="#" class="btn btn-icon btn-round btn-twitter">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-                  <button href="#" class="btn btn-icon btn-round btn-google">
-                    <i class="fab fa-google-plus"></i>
-                  </button>
-                </div>
               </div>
             </div>
           </div>

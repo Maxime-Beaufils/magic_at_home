@@ -16,6 +16,7 @@ class ProfileController < ApplicationController
   def edit
     @user = current_user
     @profile = @user.profile
+    @games = Game.where("date >= ?", Time.current).order('date ASC')
   end
 
   def update
