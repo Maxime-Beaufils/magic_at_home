@@ -1,2 +1,6 @@
-<h1>Profile#show</h1>
-<p>Find me in app/views/profile/show.html.erb</p>
+<%= stylesheet_link_tag params[:controller] %>
+
+<div class="wrapper ">
+  <%= render 'navbar', :layout => 'navbar' %>
+  <%= render 'alert', :layout => 'alert' %>
+  <div class="content">

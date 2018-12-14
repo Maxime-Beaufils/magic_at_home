@@ -10,7 +10,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :events, :through => :EventUsers  # Edit :needs to be plural same as the has_many relationship   
 
