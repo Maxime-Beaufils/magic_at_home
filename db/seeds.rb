@@ -19,6 +19,6 @@ Game.create!(place: "Caen", date: "14/12/2018", game_format: "Legacy", descripti
 200.times do
   @city = @cities.sample
   results = Geocoder.search(@city)
-  Game.create!(place: @city, date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg",
+  Game.create!(user_creator_id: 1, place: @city, date: "14/12/2018", game_format: "Legacy", description: "yogrogorgrg",
     latitude: results.first.coordinates.first, longitude: results.first.coordinates.last)
 end
