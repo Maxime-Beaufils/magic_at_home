@@ -1,1 +1,1 @@
-http://magic-at-home.herokuapp.com
+http://magic-at-home-dev.herokuapp.com/
