@@ -17,7 +17,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     yield resource if block_given?
  
     if resource.errors.empty?
-      set_flash_message!(:notice => "Votre compte a été confirmé vous pouvez maintenant vous connecter!")
+      set_flash_message!(:notice, :confirmed)
       respond_with_navigational(resource){ redirect_to "/profil" }
     else
       respond_with_navigational(resource.errors, status: :unprocessable_entity){ render :new }
