@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   
-  config.omniauth :facebook, ENV["fb_KEY"], ENV["fb_secret"], scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, nil, nil, setup: true
   #callback_url: "https://magic-at-home-dev.herokuapp.com/users/auth/facebook/callback"
   #config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
   # ==> Warden configuration
