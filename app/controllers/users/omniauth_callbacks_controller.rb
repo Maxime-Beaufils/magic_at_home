@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     if user.persisted?
     #create profile when user create
-    Profile.create!(user_id: resource.id)
+    Profile.create!(user_id: user.id)
       flash.notice = "Signed in!"
       sign_in_and_redirect(user) and return
     else
