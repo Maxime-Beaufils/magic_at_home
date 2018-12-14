@@ -15,10 +15,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash.notice = "Created account!"
       sign_in_and_redirect(user) and return
     end
-
+  end
 def private
   params[:auth] = request.env["omniauth.auth"]
   params[:params] = request.env["omniauth.params"]
     end
 end
+
 
