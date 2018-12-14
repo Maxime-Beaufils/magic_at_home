@@ -1,6 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  params[:auth] = request.env["omniauth.auth"]
-  params[:params] = request.env["omniauth.params"]
+  
   def facebook
     
     user = User.from_omniauth(request.env["omniauth.auth"], request.env["omniauth.params"])
@@ -16,7 +15,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash.notice = "Created account!"
       sign_in_and_redirect(user) and return
     end
-  end
 
- end
+def private
+  params[:auth] = request.env["omniauth.auth"]
+  params[:params] = request.env["omniauth.params"]
+    end
+end
 
