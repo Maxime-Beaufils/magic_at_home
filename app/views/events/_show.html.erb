@@ -15,8 +15,8 @@
         <h3 class="title"><%= event.title %></h3>
         <h5>Créé par <%= User.find(event.user_event_creator_id).profile.username %></h5><br>
         <h4>Lieux : <%= event.place %></h4>
-        <h4>Début :<%= event.start.strftime(' %d-%m-%Y') %></h4>
-        <h4>Fin: <%= event.end.strftime(' %d-%m-%Y') %></h4>
+        <h4>Début :<%= event.start.strftime(' %d-%h-%Y %H-%M') %></h4>
+        <h4>Fin: <%= event.end.strftime(' %d-%h-%Y %H-%M') %></h4>
         <p>Déscription:<br> <%= event.description %></p>
         <% end %>
       </div>
