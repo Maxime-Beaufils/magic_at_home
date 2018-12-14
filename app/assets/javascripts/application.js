@@ -12,15 +12,19 @@
 //
 //= require rails-ujs
 //= require activestorage
-
 //= require jquery.min
+//= require turbolinks
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
-//= require chartjs.min
 //= require bootstrap-notify
 //= require black-dashboard
+//= require moment
+//= require fullcalendar
+//= require daterangepicker
+//= require bootstrap-datepicker
 //= require_tree .
+
 
 function functionReveal() {
   var x = document.getElementById("card-hide");

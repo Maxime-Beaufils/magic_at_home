@@ -1,0 +1,38 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "fullcalendar";
+@import 'dashboards';
+@import "bootstrap-datepicker";
+
+.content {
+  color: #040327c4 !IMPORTANT;
+}
+.modal-content h4 {
+  color: #040327c4 !IMPORTANT;
+}
+.form-control {
+  color: #040327c4 !IMPORTANT;
+}
+.fullcalendar {
+  background-color: white;
+  border-radius: 5px;
+}
+.fa-calendar-check {
+  color: white;
+  font-size: 45px;
+  margin: 30px;
+}
+.cardfooter{
+  background-image: url('/assets/head-top.jpg');
+  background-size: cover;
+  border-radius: 0 0 5px 5px;
+  padding: 50px;
+}
+.daterangepicker {
+  left:20% !IMPORTANT;
+  top: 3% !IMPORTANT;
+  position: fixed !IMPORTANT;
+  z-index: 2000 !IMPORTANT;
+}

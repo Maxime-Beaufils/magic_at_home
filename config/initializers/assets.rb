@@ -22,5 +22,6 @@ Rails.application.config.assets.precompile += %w( users/sessions.scss )
 Rails.application.config.assets.precompile += %w( users/registrations.scss )
 Rails.application.config.assets.precompile += %w( users/passwords.scss )
 Rails.application.config.assets.precompile += %w( users/shared.scss )
+Rails.application.config.assets.precompile += %w( events.scss )
 
 Rails.application.config.assets.precompile += %w( *.png *.gif *.jpg *.ico *.svg *.eot *.ttf *.woff *.woff2)

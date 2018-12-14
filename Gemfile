@@ -18,7 +18,14 @@ gem 'geocoder'
 #pagination https://github.com/kaminari/kaminari
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+#API KEY
 gem 'dotenv'
+#calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-datepicker-rails'
+#formulaire
+gem 'simple_form'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1' 
 # Use postgresql as the database for Active Record
