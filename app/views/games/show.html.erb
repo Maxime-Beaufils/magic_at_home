@@ -128,12 +128,12 @@
             </div>
             <% if @game.game_comments.present? %>
               <% @game.game_comments.each do |comment|%>
-                <div class="row comments mb-4 text-center">
-                  <div class="col-sm-2">
+                <div class="row comments " style="margin:10px">
+                  <div class="col-sm-2 text-center">
                     <img id="profile-photo" src="/assets/Jacquouille.jpg" class="rounded-circle" style="width:50px;" />
                     <h4 class="m-0"><%= comment.username %></h4>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6 float-left">
                       <p class="text-white ml-3"><%= comment.created_at %></p>
                       <p class="mb-0 text-white"><%= comment.body%></p>
                   </div>
