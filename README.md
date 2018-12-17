@@ -1,24 +1,35 @@
-# README
+# Magic at home
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+![alt text](https://www.magicbazar.fr/img/product/l/lot_500_cartes_magic.png
+https://www.magicbazar.fr/img/product/l/lot_500_cartes_magic.png
+)
 
-* Ruby version
+## :disquette:Présentation de l'application:disquette:
 
-* System dependencies
+Notre application permet aux joueurs de cartes Magic The gathering de se rencontrer pour faire des parties dans leur ville.
+Voici le lien de l'application en prod sur heroku "http://magic-at-home-dev.herokuapp.com/".
 
-* Configuration
+## :minidisc:Comment utiliser le programme en local ? :minidisc:
 
-* Database creation
+Cloner le repo, puis entre les commandes suivantes pour préparer le programme
 
-* Database initialization
+```cd magic_at_home
+bundle install
+rails db:migrate
+rails server```
+aller sur http://localhost:3000
 
-* How to run the test suite
+## :tada:Contenu de l'application:tada:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Créer un profil
+* Organiser une partie
+* Chercher une partie par ville
 
-* Deployment instructions
+## :arc_en_ciel:Team Caen:arc_en_ciel:
 
-* ...
+* Maxime Beaufils
+* Rebecca Bossé
+* Iliès El ouartassi
+* Bertrand Pelletier
+* Charlotte Vaudour

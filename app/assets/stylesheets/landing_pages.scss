@@ -35,7 +35,7 @@
  box-shadow: 4px 4px 5px rgba(37, 37, 37, 0.651);
 }
 .text-center {
- top: 360px;
+ top: 300px;
 }
 .row div{
  width: 50%;
@@ -357,7 +357,7 @@ body {
    @for $i from 1 through $items {
      &--step#{$i} {
        $color: nth($colors, ((($i - 1) % 4) + 1));
-       background-color: $color;
+      
        .head::after {
          border-color: $color;
        }
