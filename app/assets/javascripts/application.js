@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery.min
-//= require turbolinks
+
 //= require popper.min
 //= require bootstrap.min
 //= require perfect-scrollbar.jquery.min
