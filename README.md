@@ -1,12 +1,17 @@
 # Magic at home
 
 
-![alt text](https://www.magicbazar.fr/img/product/l/lot_500_cartes_magic.png)
+<p float="left">
+<img src="http://magic-at-home-dev.herokuapp.com/assets/ce4.jpg" width="400">
+<img src="http://magic-at-home-dev.herokuapp.com/assets/ce2.jpg" width="400">
+</p>
 
 ## 💾Présentation de l'application💾
 
 Notre application permet aux joueurs de cartes Magic The gathering de se rencontrer pour faire des parties dans leur ville.
 Voici le lien de l'application en prod sur heroku "http://magic-at-home-dev.herokuapp.com/".
+
+Application ruby on rails.
 
 ## 💽Comment utiliser le programme en local ? 💽
 
